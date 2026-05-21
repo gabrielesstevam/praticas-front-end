@@ -1,0 +1,145 @@
+@charset "UTF-8";
+:root{
+    --navegação: #2A80D8;
+    --aba-navegação: #6AB1E8;
+    --secundario-fundo: #529DDE;
+    --fundo-main: #186CC3;
+    --texto-icone-fundo: #ffffff;
+    --footer: #003A76;
+    --transparência: #ffffff00;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+    
+    font-weight: bolder;
+}
+/*======================*/
+/*== NAVEGAÇÃO ======================*/
+nav{
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: var(--navegação);
+    color: var(--texto-icone-fundo);
+    padding: 15px;
+    height: 40px;
+    width: 100vw;
+    font-size: 1.2em;
+}
+nav a.icone{
+    color: var(--texto-icone-fundo);
+    transition: 0.2s;
+    padding: 5px;
+    border-radius: 50%;
+}
+nav a:hover{
+    color: var(--footer);
+}
+nav ul a:hover{
+    color: var(--footer);
+}
+nav ul{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    gap: 20px;
+
+    padding: 20px 10px;
+    border-radius: 40px;
+    background-color: var(--aba-navegação);
+    list-style-type: none;
+
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: 0.2s;
+}
+nav span:hover ul{
+    visibility: visible;
+    opacity: 100;
+    transform: translateY(0);
+}
+nav ul a{
+    color: var(--texto-icone-fundo);
+    transition: 0.3s;
+}
+/*======================*/
+/*== INICIO ====================*/
+body{
+    height: 100%;
+    background-color: var(--fundo-main);
+}
+.inicial{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    min-height: 250px;
+    background-image: radial-gradient(var(--aba-navegação), var(--fundo-main) 70%);
+    margin: 30px 10px;
+}
+.inicial .one{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    border-bottom: 1px solid var(--texto-icone-fundo);
+}
+.inicial .one p{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 0.6em;
+    font-weight: bolder;
+    color: var(--texto-icone-fundo);
+}
+
+.inicial .two{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--texto-icone-fundo);
+    text-align: center;
+}
+.inicial .two h2{
+    margin-top: 15px;
+    font-weight: bolder;
+}
+.inicial .two p.cargo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    font-weight: bolder;
+    padding: 5px 10px;
+    border-radius: 8px;
+    width: fit-content;
+    font-size: 0.7em;
+    background-color: var(--secundario-fundo);
+    transition: 0.3s;
+}
+.inicial .two p.cargo:hover{
+    background-color: #003A76;
+}
+.inicial .two .sobre{
+    font-size: 0.7em;
+    text-align: justify;
+    margin: 10px;
+}
+/*======================*/
+/*== MEUS ATENDIMENTOS ====================*/
