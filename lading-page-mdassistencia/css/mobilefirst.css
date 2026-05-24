@@ -18,6 +18,8 @@
     
 }
 main{
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 5px 1fr 5px;
     /* border: 2px dashed yellow; */
@@ -39,15 +41,16 @@ nav{
     background-color: var(--navegação);
     color: var(--texto-icone-fundo);
     padding: 15px;
-    height: 45px;
+    height: 50px;
     width: 100%;
     font-size: 1.25em;
 }
 nav a.icone{
     color: var(--texto-icone-fundo);
-    transition: 0.2s;
     padding: 5px;
     border-radius: 50%;
+    
+    transition: 0.2s;
 }
 nav a:hover{
     color: var(--footer);
@@ -59,7 +62,7 @@ nav ul{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 35px;
+    top: 40px;
     right: 10px;
     gap: 20px;
 
@@ -110,7 +113,7 @@ body{
 .inicial .one p{
     margin-top: 10px;
     margin-bottom: 20px;
-    font-size: 0.6em;
+    font-size: 0.7em;
     font-weight: bolder;
     color: var(--texto-icone-fundo);
 }
@@ -126,6 +129,7 @@ body{
 }
 .inicial .two h2{
     margin-top: 15px;
+    font-size: 1.5em;
     font-weight: bolder;
 }
 .inicial .two p.cargo{
@@ -138,15 +142,16 @@ body{
     padding: 5px 10px;
     border-radius: 8px;
     width: fit-content;
-    font-size: 0.7em;
+    font-size: 0.9em;
     background-color: var(--secundario-fundo);
     transition: 0.3s;
 }
 .inicial .two p.cargo:hover{
     background-color: #003A76;
+    border: 1px solid var(--aba-navegação);
 }
 .inicial .two .sobre{
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-align: justify;
     margin: 10px;
 }
@@ -159,7 +164,7 @@ body{
     padding: 10px;
 }
 .atendimentos h2{
-    font-size: 1em;
+    font-size: 1.2em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
@@ -169,7 +174,7 @@ body{
     flex-direction: column;
     gap: 10px;
 
-    font-size: 0.9em;
+    font-size: 1em;
     margin-top: 10px;
     font-weight: bolder;
 }
@@ -179,7 +184,7 @@ body{
     gap: 10px;
 
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
-    padding: 2px 5px;
+    padding: 5px 5px;
     border-radius: 10px;
 }
 .atendimentos .locais{
@@ -204,9 +209,10 @@ body{
 .atendimentos .locais li:hover{
     background-color: var(--terceiro-fundo);
     color: var(--fundo-main);
+    border: 1px solid var(--fundo-main);
 }
 .atendimentos h3{
-    font-size: 0.9em;
+    font-size: 1.2em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
@@ -220,7 +226,7 @@ body{
     gap: 20px;
 
     font-weight: bolder;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 .atendimentos .formulario{
     display: flex;
@@ -236,7 +242,7 @@ body{
 
     border: 1px solid var(--fundo-main);
     border-radius: 20px;
-    padding: 10px;
+    padding: 15px;
     width: 100%;
 }
 .atendimentos input[type="number"]::-webkit-inner-spin-button{
@@ -254,7 +260,7 @@ body{
 }
 .atendimentos .label textarea{
     width: 99%;
-    height: 200px;
+    height: 100px;
     resize: vertical;
 }
 .atendimentos input, textarea{
@@ -275,12 +281,15 @@ body{
     padding: 10px;
     border-radius: 30px;
     font-weight: bolder;
+    margin-top: 5px;
+    margin-bottom: 5px;
 
     transition: 0.3s;
 }
 .atendimentos input[type="submit"]:hover{
     background-color: var(--terceiro-fundo);
     color: var(--fundo-main);
+    border: 1px solid var(--fundo-main);
 }
 .atendimentos .link{
     display: flex;
