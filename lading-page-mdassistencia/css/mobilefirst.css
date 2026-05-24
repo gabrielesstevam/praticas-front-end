@@ -17,6 +17,14 @@
     
     font-weight: bolder;
 }
+main{
+    display: grid;
+    grid-template-columns: 5px 1fr 5px;
+    border: 1px solid purple;
+}
+section{
+    border-radius: 10px;
+ }
 /*======================*/
 /*== NAVEGAÇÃO ======================*/
 nav{
@@ -30,9 +38,9 @@ nav{
     background-color: var(--navegação);
     color: var(--texto-icone-fundo);
     padding: 15px;
-    height: 40px;
-    width: 100vw;
-    font-size: 1.2em;
+    height: 45px;
+    width: 100%;
+    font-size: 1.25em;
 }
 nav a.icone{
     color: var(--texto-icone-fundo);
@@ -84,9 +92,11 @@ body{
     justify-content: center;
     flex-direction: column;
 
+    grid-column: 2;
+
     min-height: 250px;
     background-image: radial-gradient(var(--aba-navegação), var(--fundo-main) 70%);
-    margin: 30px 10px;
+    border: 1px solid green;
 }
 .inicial .one{
     display: flex;
@@ -104,7 +114,6 @@ body{
     font-weight: bolder;
     color: var(--texto-icone-fundo);
 }
-
 .inicial .two{
     display: flex;
     flex-direction: column;
@@ -143,3 +152,9 @@ body{
 }
 /*======================*/
 /*== MEUS ATENDIMENTOS ====================*/
+.atendimentos {
+    grid-column: 2;
+    border: 1px solid red;
+    background-color: var(--texto-icone-fundo);
+    padding: 20px;
+}
