@@ -20,11 +20,11 @@
 main{
     display: grid;
     grid-template-columns: 5px 1fr 5px;
-    border: 2px dashed yellow;
+    /* border: 2px dashed yellow; */
 }
 section{
     border-radius: 10px;
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
  }
 /*======================*/
 /*== NAVEGAÇÃO ======================*/
@@ -146,7 +146,7 @@ body{
     background-color: #003A76;
 }
 .inicial .two .sobre{
-    font-size: 0.7em;
+    font-size: 0.8em;
     text-align: justify;
     margin: 10px;
 }
@@ -165,7 +165,6 @@ body{
     border-radius: 10px;
 }
 .atendimentos .infos{
-    
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -196,7 +195,8 @@ body{
 .atendimentos .locais li{
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
-    padding: 5px 50px;
+    padding: 10px 70px;
+
     border-radius: 10px;
 
     transition: 0.3s;
@@ -217,17 +217,17 @@ body{
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    gap: 10px;
+    gap: 20px;
 
     font-weight: bolder;
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 .atendimentos .formulario{
     display: flex;
     flex-flow: column;
     gap: 5px;
 
-    font-size: 0.7em;
+    font-size: 0.8em;
     font-weight: bolder;
 }
 .atendimentos label{
@@ -236,10 +236,14 @@ body{
 
     border: 1px solid var(--fundo-main);
     border-radius: 20px;
-    padding: 7px;
+    padding: 10px;
     width: 100%;
 }
+.atendimentos input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
 .atendimentos input, textarea{
+    color: var(--aba-navegação);
     width: 100%;
     margin-right: 10px;
     border: none;
@@ -261,4 +265,59 @@ body{
 }
 .atendimentos input:focus-within, textarea:focus-within{
     outline: none;
+}
+.atendimentos label:focus-within{
+    border: 2px solid var(--fundo-main);
+}
+.atendimentos input[type="submit"]{
+    background-color: var(--fundo-main);
+    color: var(--texto-icone-fundo);
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: bolder;
+
+    transition: 0.3s;
+}
+.atendimentos input[type="submit"]:hover{
+    background-color: var(--terceiro-fundo);
+    color: var(--fundo-main);
+}
+.atendimentos .link{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 2.5em;
+
+    text-decoration: none;
+    width: fit-content;
+    overflow: hidden;
+    color: var(--fundo-main);
+    padding: 5px;
+    background-color: var(--terceiro-fundo);
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+.atendimentos .link p{
+    display: none;
+    font-size: 0.4em;
+}
+.atendimentos .link:hover{
+    background-color: var(--fundo-main);
+    color: var(--terceiro-fundo);
+}
+.atendimentos .link:hover p{
+    display: inline;
+}/*======================*/
+/*== EU DOU UM JEITO ====================*/
+
+
+/*== MEDIA-QUERIES ==================== */
+/*== MEDIA-QUERIES LOCAIS DE ATENDIMENTO ==================== */
+@media screen and (max-width: 320px) {
+    .atendimentos .locais li{
+        width: 90%;
+        text-align: center;
+        padding: 5px 0px;
+    }
 }
