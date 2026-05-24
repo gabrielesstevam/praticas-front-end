@@ -3,6 +3,7 @@
     --navegação: #2A80D8;
     --aba-navegação: #6AB1E8;
     --secundario-fundo: #529DDE;
+    --terceiro-fundo: #bce0fb;
     --fundo-main: #186CC3;
     --texto-icone-fundo: #ffffff;
     --footer: #003A76;
@@ -15,15 +16,15 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     letter-spacing: 1px;
     
-    font-weight: bolder;
 }
 main{
     display: grid;
     grid-template-columns: 5px 1fr 5px;
-    border: 1px solid purple;
+    border: 2px dashed yellow;
 }
 section{
     border-radius: 10px;
+    border: 1px dashed red;
  }
 /*======================*/
 /*== NAVEGAÇÃO ======================*/
@@ -96,7 +97,6 @@ body{
 
     min-height: 250px;
     background-image: radial-gradient(var(--aba-navegação), var(--fundo-main) 70%);
-    border: 1px solid green;
 }
 .inicial .one{
     display: flex;
@@ -154,7 +154,111 @@ body{
 /*== MEUS ATENDIMENTOS ====================*/
 .atendimentos {
     grid-column: 2;
-    border: 1px solid red;
     background-color: var(--texto-icone-fundo);
-    padding: 20px;
+    color: var(--fundo-main);
+    padding: 10px;
+}
+.atendimentos h2{
+    font-size: 1em;
+    background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.atendimentos .infos{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    font-size: 0.9em;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+.atendimentos .adicionais{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+.atendimentos .locais{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style-type: none;
+}
+.atendimentos .locais li{
+    background-color: var(--fundo-main);
+    color: var(--texto-icone-fundo);
+    padding: 5px 50px;
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+.atendimentos .locais li:hover{
+    background-color: var(--terceiro-fundo);
+    color: var(--fundo-main);
+}
+.atendimentos h3{
+    font-size: 0.9em;
+    background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.atendimentos .tutorial{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 10px;
+
+    font-weight: bolder;
+    font-size: 0.7em;
+}
+.atendimentos .formulario{
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+
+    font-size: 0.7em;
+    font-weight: bolder;
+}
+.atendimentos label{
+    display: flex;
+    gap: 5px;
+
+    border: 1px solid var(--fundo-main);
+    border-radius: 20px;
+    padding: 7px;
+    width: 100%;
+}
+.atendimentos input, textarea{
+    width: 100%;
+    margin-right: 10px;
+    border: none;
+}
+.atendimentos .labeli{
+    align-items: center;
+    justify-content: flex-start;
+}
+.atendimentos .label textarea{
+    width: 99%;
+    height: 200px;
+    resize: vertical;
+}
+.atendimentos input, textarea{
+    caret-color: var(--fundo-main);
+}
+.atendimentos input::placeholder, textarea::placeholder{
+    color: var(--terceiro-fundo);
+}
+.atendimentos input:focus-within, textarea:focus-within{
+    outline: none;
 }
