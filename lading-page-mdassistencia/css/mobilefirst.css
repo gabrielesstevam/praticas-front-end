@@ -28,6 +28,9 @@ section{
     border-radius: 10px;
     /* border: 1px dashed red; */
  }
+ html {
+    scroll-behavior: smooth;
+ }
 /*======================*/
 /*== NAVEGAÇÃO ======================*/
 nav{
@@ -90,8 +93,9 @@ nav ul a{
 body{
     height: 100%;
     background-color: var(--fundo-main);
+
 }
-.inicial{
+#inicial{
     margin-top: 15px;
     margin-bottom: 15px;
     display: flex;
@@ -103,7 +107,7 @@ body{
     min-height: 250px;
     background-image: radial-gradient(var(--aba-navegação), var(--fundo-main) 70%);
 }
-.inicial .one{
+#inicial .one{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,14 +116,14 @@ body{
     text-align: center;
     border-bottom: 1px solid var(--texto-icone-fundo);
 }
-.inicial .one p{
+#inicial .one p{
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 0.7em;
     font-weight: bolder;
     color: var(--texto-icone-fundo);
 }
-.inicial .two{
+#inicial .two{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,12 +133,12 @@ body{
     color: var(--texto-icone-fundo);
     text-align: center;
 }
-.inicial .two h2{
+#inicial .two h2{
     margin-top: 15px;
     font-size: 1.5em;
     font-weight: bolder;
 }
-.inicial .two p.cargo{
+#inicial .two p.cargo{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,30 +152,30 @@ body{
     background-color: var(--secundario-fundo);
     transition: 0.3s;
 }
-.inicial .two p.cargo:hover{
+#inicial .two p.cargo:hover{
     background-color: #003A76;
     border: 1px solid var(--aba-navegação);
 }
-.inicial .two .sobre{
+#inicial .two .sobre{
     font-size: 0.9em;
     text-align: justify;
     margin: 10px;
 }
 /*======================*/
 /*== MEUS ATENDIMENTOS ====================*/
-.atendimentos {
+#atendimentos {
     grid-column: 2;
     background-color: var(--texto-icone-fundo);
     color: var(--fundo-main);
     padding: 10px;
 }
-.atendimentos h2{
+#atendimentos h2{
     font-size: 1.2em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
 }
-.atendimentos .infos{
+#atendimentos .infos{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -180,7 +184,7 @@ body{
     margin-top: 10px;
     font-weight: bolder;
 }
-.atendimentos .adicionais{
+#atendimentos .adicionais{
     display: flex;
     align-items: center;
     gap: 10px;
@@ -189,7 +193,7 @@ body{
     padding: 5px 5px;
     border-radius: 10px;
 }
-.atendimentos .locais{
+#atendimentos .locais{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -199,7 +203,7 @@ body{
     list-style-type: none;
     text-align: center;
 }
-.atendimentos .locais li{
+#atendimentos .locais li{
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
     padding: 10px 0px;
@@ -207,31 +211,31 @@ body{
 
     transition: 0.3s;
 }
-.atendimentos .locais li:hover{
+#atendimentos .locais li:hover{
     background-color: var(--terceiro-fundo);
     color: var(--fundo-main);
     border: 1px solid var(--fundo-main);
 }
-.atendimentos h3{
+#atendimentos h3{
     font-size: 1.2em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
 }
-.atendimentos .tutorial{
+#atendimentos .tutorial{
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    gap: 20px;
+    gap: 10px;
 
     font-size: 0.9em;
 }
-.atendimentos .tutorial span{
+#atendimentos .tutorial span{
     font-weight: bolder;
 }
-.atendimentos .formulario{
+#atendimentos .formulario{
     display: flex;
     flex-flow: column;
     gap: 5px;
@@ -239,7 +243,7 @@ body{
     font-size: 0.8em;
     font-weight: bolder;
 }
-.atendimentos label{
+#atendimentos label{
     display: flex;
     gap: 5px;
 
@@ -248,37 +252,37 @@ body{
     padding: 15px;
     width: 100%;
 }
-.atendimentos input[type="number"]::-webkit-inner-spin-button{
+#atendimentos input[type="number"]::-webkit-inner-spin-button{
     -webkit-appearance: none;
 }
-.atendimentos input, textarea{
+#atendimentos input, textarea{
     color: var(--aba-navegação);
     width: 100%;
     margin-right: 10px;
     border: none;
 }
-.atendimentos .labeli{
+#atendimentos .labeli{
     align-items: center;
     justify-content: flex-start;
 }
-.atendimentos .label textarea{
+#atendimentos .label textarea{
     width: 99%;
     height: 100px;
     resize: vertical;
 }
-.atendimentos input, textarea{
+#atendimentos input, textarea{
     caret-color: var(--fundo-main);
 }
-.atendimentos input::placeholder, textarea::placeholder{
+#atendimentos input::placeholder, textarea::placeholder{
     color: var(--terceiro-fundo);
 }
-.atendimentos input:focus-within, textarea:focus-within{
+#atendimentos input:focus-within, textarea:focus-within{
     outline: none;
 }
-.atendimentos label:focus-within{
+#atendimentos label:focus-within{
     border: 2px solid var(--fundo-main);
 }
-.atendimentos input[type="submit"]{
+#atendimentos input[type="submit"]{
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
     padding: 10px;
@@ -289,12 +293,12 @@ body{
 
     transition: 0.3s;
 }
-.atendimentos input[type="submit"]:hover{
+#atendimentos input[type="submit"]:hover{
     background-color: var(--terceiro-fundo);
     color: var(--fundo-main);
     border: 1px solid var(--fundo-main);
 }
-.atendimentos .link{
+#atendimentos .link{
     display: flex;
     gap: 5px;
     align-items: center;
@@ -309,20 +313,20 @@ body{
 
     transition: 0.3s;
 }
-.atendimentos .link p{
+#atendimentos .link p{
     display: none;
     font-size: 0.4em;
 }
-.atendimentos .link:hover{
+#atendimentos .link:hover{
     background-color: var(--fundo-main);
     color: var(--terceiro-fundo);
 }
-.atendimentos .link:hover p{
+#atendimentos .link:hover p{
     display: inline;
 }
 /*======================*/
 /*== EU DOU UM JEITO ====================*/
-.problemas-section{
+#problemas-section{
     grid-column: 2;
 
     margin-top: 10px;
@@ -330,20 +334,20 @@ body{
     background-color: var(--texto-icone-fundo);
     padding: 10px;
 }
-.problemas-section h2{
+#problemas-section h2{
     font-size: 1.2em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
 }
-.problemas-section h3{
+#problemas-section h3{
     font-size: 1em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
     margin: 10px 0px;
 }
-.problemas-section ul{
+#problemas-section ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -353,30 +357,30 @@ body{
     list-style-type: none;
     text-align: center;
 }
-.problemas-section li{
+#problemas-section li{
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
-    padding: 10px 0px;
+    padding: 10px 5px;
     border-radius: 10px;
 
     transition: 0.3s;
 }
-.problemas-section .marcas li{
+#problemas-section .marcas li{
     background-color: var(--aba-navegação);
 }
-.problemas-section .marcas li:hover{
+#problemas-section .marcas li:hover{
     color: var(--fundo-main);
     background-color: var(--terceiro-fundo);
     border: 1px solid var(--fundo-main);
 }
-.problemas-section .problemas li:hover{
+#problemas-section .problemas li:hover{
     color: var(--fundo-main);
     background-color: var(--terceiro-fundo);
     border: 1px solid var(--fundo-main);
 }
 /*======================*/
 /*== FAQ ====================*/
-.perguntas {
+#perguntas {
     grid-column: 2;
 
     margin: 10px 0px;
@@ -384,29 +388,30 @@ body{
     color: var(--fundo-main);
     padding: 10px;
 }
-.perguntas h2{
+#perguntas h2{
     font-size: 1.2em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
 }
-.perguntas div{
+#perguntas div{
     display: flex;
     flex-flow: column;
     gap: 10px;
     
     margin-top: 10px;
 }
-.perguntas details {
+#perguntas details {
+    font-size: 0.9em;
     color: white;
     background-color: var(--fundo-main);
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-radius: 8px;
 }
-.perguntas details p{
+#perguntas details p{
     background-color: var(--texto-icone-fundo);
     border-radius: 8px;
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     color: var(--secundario-fundo);
     padding: 5px;
     font-size: 0.9em;
