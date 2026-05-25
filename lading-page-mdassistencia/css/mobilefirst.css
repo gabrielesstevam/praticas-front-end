@@ -190,14 +190,14 @@ body{
     border-radius: 10px;
 }
 .atendimentos .locais{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
 
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     list-style-type: none;
+    text-align: center;
 }
 .atendimentos .locais li{
     background-color: var(--fundo-main);
@@ -343,12 +343,14 @@ body{
     border-radius: 10px;
     margin: 10px 0px;
 }
-.problemas-section ul{
-    display: flex;
-    flex-flow: row wrap;
+.problemas-section ul{display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
 
+    margin-top: 10px;
+    margin-bottom: 10px;
     list-style-type: none;
+    text-align: center;
 }
 .problemas-section li{
     background-color: var(--fundo-main);
@@ -373,7 +375,53 @@ body{
 }
 /*======================*/
 /*== FAQ ====================*/
+.perguntas {
+    grid-column: 2;
 
+    margin: 10px 0px;
+    background-color: var(--texto-icone-fundo);
+    color: var(--fundo-main);
+    padding: 10px;
+}
+.perguntas h2{
+    font-size: 1.2em;
+    background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.perguntas div{
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    
+    margin-top: 10px;
+}
+.perguntas details {
+    color: white;
+    background-color: var(--fundo-main);
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+.perguntas details p{
+    background-color: var(--texto-icone-fundo);
+    border-radius: 8px;
+    margin: 10px 0px;
+    color: var(--secundario-fundo);
+    padding: 5px;
+    font-size: 0.9em;
+}
+footer {
+    text-align: center;
+    padding: 5px;
+    font-size: 1em;
+    background-color: var(--aba-navegação);
+    color: var(--texto-icone-fundo);
+}
+footer a{
+    color: var(--texto-icone-fundo);
+    text-decoration: none;
+    font-weight: bolder;
+}
 /*== MEDIA-QUERIES ==================== */
 /*== MEDIA-QUERIES LOCAIS DE ATENDIMENTO ==================== */
 @media screen and (max-width: 320px) {
