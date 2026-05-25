@@ -1,4 +1,18 @@
 @charset "UTF-8";
+@font-face {
+    src: url(../fonts/American\ Captain.otf) format("opentype"), url("../fonts/American\ Captain.ttf") format("truetype");
+    font-family: "American";
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    src: url(../fonts/LEMONMILK-Bold.otf) format("truetype");
+    font-family: "Titulos";
+}
+@font-face {
+    src: url(../fonts/LEMONMILK-Light.otf) format("truetype");
+    font-family: "Textos";
+}
 :root{
     --navegação: #2A80D8;
     --aba-navegação: #6AB1E8;
@@ -13,9 +27,8 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     letter-spacing: 1px;
-    
+    font-family: Textos;
 }
 main{
     margin-top: 5px;
@@ -28,7 +41,7 @@ section{
     border-radius: 10px;
     /* border: 1px dashed red; */
  }
- html {
+html {
     scroll-behavior: smooth;
  }
 /*======================*/
@@ -101,7 +114,6 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
-
     grid-column: 2;
 
     min-height: 250px;
@@ -119,7 +131,7 @@ body{
 #inicial .one p{
     margin-top: 10px;
     margin-bottom: 20px;
-    font-size: 0.7em;
+    font-size: 0.5em;
     font-weight: bolder;
     color: var(--texto-icone-fundo);
 }
@@ -135,8 +147,9 @@ body{
 }
 #inicial .two h2{
     margin-top: 15px;
-    font-size: 1.5em;
-    font-weight: bolder;
+    font-size: 1.6em;
+    letter-spacing: 5px;
+    font-family: Titulos;
 }
 #inicial .two p.cargo{
     display: flex;
@@ -148,8 +161,8 @@ body{
     padding: 5px 10px;
     border-radius: 8px;
     width: fit-content;
-    font-size: 0.9em;
-    background-color: var(--secundario-fundo);
+    font-size: 0.8em;
+    background-color: var(--aba-navegação);
     transition: 0.3s;
 }
 #inicial .two p.cargo:hover{
@@ -157,7 +170,7 @@ body{
     border: 1px solid var(--aba-navegação);
 }
 #inicial .two .sobre{
-    font-size: 0.9em;
+    font-size: 0.8em;
     text-align: justify;
     margin: 10px;
 }
@@ -170,17 +183,18 @@ body{
     padding: 10px;
 }
 #atendimentos h2{
-    font-size: 1.2em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
+    font-size: 1.2em;
+    font-family: Titulos;
 }
 #atendimentos .infos{
     display: flex;
     flex-direction: column;
     gap: 10px;
 
-    font-size: 1em;
+    font-size: 0.9em;
     margin-top: 10px;
     font-weight: bolder;
 }
@@ -202,11 +216,16 @@ body{
     margin-bottom: 10px;
     list-style-type: none;
     text-align: center;
+    font-size: 0.9em;
 }
 #atendimentos .locais li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
-    padding: 10px 0px;
+    padding: 10px 10px;
     border-radius: 10px;
 
     transition: 0.3s;
@@ -217,7 +236,7 @@ body{
     border: 1px solid var(--fundo-main);
 }
 #atendimentos h3{
-    font-size: 1.2em;
+    font-size: 0.9em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
@@ -230,17 +249,19 @@ body{
     list-style-type: none;
     gap: 10px;
 
-    font-size: 0.9em;
+    font-size: 0.8em;
+    line-height: 25px;
 }
 #atendimentos .tutorial span{
     font-weight: bolder;
+    font-family: Titulos;
 }
 #atendimentos .formulario{
     display: flex;
     flex-flow: column;
     gap: 5px;
 
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: bolder;
 }
 #atendimentos label{
@@ -251,6 +272,7 @@ body{
     border-radius: 20px;
     padding: 15px;
     width: 100%;
+    font-family: Titulos;
 }
 #atendimentos input[type="number"]::-webkit-inner-spin-button{
     -webkit-appearance: none;
@@ -274,6 +296,7 @@ body{
     caret-color: var(--fundo-main);
 }
 #atendimentos input::placeholder, textarea::placeholder{
+    font-size: 0.8em;
     color: var(--terceiro-fundo);
 }
 #atendimentos input:focus-within, textarea:focus-within{
@@ -339,9 +362,10 @@ body{
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
+    font-family: Titulos;
 }
 #problemas-section h3{
-    font-size: 1em;
+    font-size: 0.9em;
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
@@ -352,6 +376,7 @@ body{
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 
+    font-size: 0.9em;
     margin-top: 10px;
     margin-bottom: 10px;
     list-style-type: none;
@@ -393,6 +418,7 @@ body{
     background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
     padding: 5px 15px;
     border-radius: 10px;
+    font-family: Titulos;
 }
 #perguntas div{
     display: flex;
@@ -414,7 +440,7 @@ body{
     margin: 10px 0px 0px 0px;
     color: var(--secundario-fundo);
     padding: 5px;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 footer {
     text-align: center;
@@ -422,6 +448,8 @@ footer {
     font-size: 1em;
     background-color: var(--aba-navegação);
     color: var(--texto-icone-fundo);
+    font-family: Titulos;
+    font-size: 0.8em;
 }
 footer a{
     color: var(--texto-icone-fundo);
