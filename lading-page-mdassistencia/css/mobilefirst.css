@@ -202,8 +202,7 @@ body{
 .atendimentos .locais li{
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
-    padding: 10px 70px;
-
+    padding: 10px 0px;
     border-radius: 10px;
 
     transition: 0.3s;
@@ -304,7 +303,6 @@ body{
     overflow: hidden;
     color: var(--fundo-main);
     padding: 5px;
-    background-color: var(--terceiro-fundo);
     border-radius: 8px;
 
     transition: 0.3s;
@@ -343,7 +341,8 @@ body{
     border-radius: 10px;
     margin: 10px 0px;
 }
-.problemas-section ul{display: grid;
+.problemas-section ul{
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 
@@ -355,7 +354,7 @@ body{
 .problemas-section li{
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
-    padding: 10px 70px;
+    padding: 10px 0px;
     border-radius: 10px;
 
     transition: 0.3s;
