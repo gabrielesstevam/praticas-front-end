@@ -226,8 +226,10 @@ body{
     list-style-type: none;
     gap: 20px;
 
-    font-weight: bolder;
     font-size: 0.9em;
+}
+.atendimentos .tutorial span{
+    font-weight: bolder;
 }
 .atendimentos .formulario{
     display: flex;
