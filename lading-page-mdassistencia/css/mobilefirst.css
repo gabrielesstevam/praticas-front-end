@@ -43,6 +43,7 @@ section{
  }
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 55px;
  }
 /*======================*/
 /*== NAVEGAÇÃO ======================*/
@@ -383,6 +384,10 @@ body{
     text-align: center;
 }
 #problemas-section li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background-color: var(--fundo-main);
     color: var(--texto-icone-fundo);
     padding: 10px 5px;
