@@ -18,8 +18,8 @@
     
 }
 main{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     display: grid;
     grid-template-columns: 5px 1fr 5px;
     /* border: 2px dashed yellow; */
@@ -92,6 +92,8 @@ body{
     background-color: var(--fundo-main);
 }
 .inicial{
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -317,9 +319,60 @@ body{
 }
 .atendimentos .link:hover p{
     display: inline;
-}/*======================*/
+}
+/*======================*/
 /*== EU DOU UM JEITO ====================*/
+.problemas-section{
+    grid-column: 2;
 
+    margin-top: 10px;
+    color: var(--fundo-main);
+    background-color: var(--texto-icone-fundo);
+    padding: 10px;
+}
+.problemas-section h2{
+    font-size: 1.2em;
+    background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.problemas-section h3{
+    font-size: 1em;
+    background-image: linear-gradient(to right, var(--terceiro-fundo), var(--transparência));
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+.problemas-section ul{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+
+    list-style-type: none;
+}
+.problemas-section li{
+    background-color: var(--fundo-main);
+    color: var(--texto-icone-fundo);
+    padding: 10px 70px;
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+.problemas-section .marcas li{
+    background-color: var(--aba-navegação);
+}
+.problemas-section .marcas li:hover{
+    color: var(--fundo-main);
+    background-color: var(--terceiro-fundo);
+    border: 1px solid var(--fundo-main);
+}
+.problemas-section .problemas li:hover{
+    color: var(--fundo-main);
+    background-color: var(--terceiro-fundo);
+    border: 1px solid var(--fundo-main);
+}
+/*======================*/
+/*== FAQ ====================*/
 
 /*== MEDIA-QUERIES ==================== */
 /*== MEDIA-QUERIES LOCAIS DE ATENDIMENTO ==================== */
