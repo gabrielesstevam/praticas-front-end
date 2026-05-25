@@ -72,10 +72,10 @@ nav a.icone{
 nav a:hover{
     color: var(--footer);
 }
-nav ul a:hover{
+nav span ul.icones a:hover{
     color: var(--footer);
 }
-nav ul{
+nav span ul.icones{
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -93,12 +93,15 @@ nav ul{
     transform: translateY(-20px);
     transition: 0.2s;
 }
-nav span:hover ul{
+nav span:hover ul.icones{
     visibility: visible;
     opacity: 100;
     transform: translateY(0);
 }
-nav ul a{
+nav .media-icones{
+    display: none;
+}
+nav ul.icones a{
     color: var(--texto-icone-fundo);
     transition: 0.3s;
 }
@@ -110,13 +113,14 @@ body{
 
 }
 #inicial{
-    margin-top: 15px;
-    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     grid-column: 2;
 
+    
+    margin-top: 15px;
+    margin-bottom: 15px;
     min-height: 250px;
     background-image: radial-gradient(var(--aba-navegação), var(--fundo-main) 70%);
 }
@@ -124,7 +128,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center;;
 
     text-align: center;
     border-bottom: 1px solid var(--texto-icone-fundo);
@@ -348,6 +352,9 @@ body{
 #atendimentos .link:hover p{
     display: inline;
 }
+#segundo-atendimento{
+    display: none;
+}
 /*======================*/
 /*== EU DOU UM JEITO ====================*/
 #problemas-section{
@@ -439,7 +446,7 @@ body{
     padding: 5px 15px;
     border-radius: 8px;
 }
-#perguntas details p{
+#perguntas details .resposta{
     background-color: var(--texto-icone-fundo);
     border-radius: 8px;
     margin: 10px 0px 0px 0px;

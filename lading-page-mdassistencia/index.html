@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MD-Assistência</title>
     <link rel="stylesheet" href="css/mobilefirst.css">
+    <link rel="stylesheet" href="css/media-querie.css">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <nav>
+        <ul class="media-icones">
+            <li><a href="#inicial"><i class="fa-solid fa-house"></i></a></li>
+            <li><a href="#atendimentos"><i class="fa-solid fa-headset"></i></a></li>
+            <li><a href="#problemas-section"><i class="fa-solid fa-screwdriver-wrench"></i></a></li>
+            <li><a href="#perguntas"><i class="fa-solid fa-circle-question"></i></a></li>
+        </ul>
         <span>
             <a href="#" class="icone"><i class="fa-solid fa-bars"></i></a>
-            <ul>
+            <ul class="icones">
                 <li><a href="#inicial"><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="#atendimentos"><i class="fa-solid fa-headset"></i></a></li>
                 <li><a href="#problemas-section"><i class="fa-solid fa-screwdriver-wrench"></i></a></li>
                 <li><a href="#perguntas"><i class="fa-solid fa-circle-question"></i></a></li>
             </ul>
         </span>
+        
     </nav>
     <main>
         <section id="inicial">
@@ -60,7 +68,28 @@
                 <li>Búzios</li>
                 <li>Tabatinga</li>
             </ul>
-            <h3>PREENCHA SEUS DADOS</h3>
+            <div class="segundo-atendimento">
+                <h3>PREENCHA SEUS DADOS</h3>
+                <ul class="tutorial">
+                    <li><span>1 - Diagnóstico do problema</span> <br> Após o contato, será realizada uma análise do problema da máquina.</li>
+                    <li><span>2 - Reparo e manutenção </span><br> O serviço em 98% das ocasiões, é realizado no local sempre que possível.</li>
+                </ul>
+                <form class="formulario">
+                    <label class="labeli" for="inome">Nome:<input type="text" id="inome" placeholder="Seu nome" autocomplete="cc-name" required></label>
+                    <label class="labeli" for="icep">Endereço:<input type="number" id="icep" placeholder="Cidade|Avenida|Número" autocomplete="address-line1" required></label>
+                    <label class="labeli" for="icomplemento">Complemento:<input type="text" id="icomplemento" placeholder="Informação adicional"></label>
+                    <label class="label" for="iarea">Problema:
+                        <textarea id="iarea" name="mensagem" rows="4" cols="20" placeholder="Descreva o seu problema"></textarea>
+                    </label>
+                    <input type="submit" value="Enviar" class="submit">
+
+                    <span href="#" class="link"><i class="fa-brands fa-square-whatsapp"></i><p>[84]9-9959-2051</p></span>
+                    <span href="#" class="link"><i class="fa-brands fa-square-instagram"></i><p>@md.assistenciatecnica</p></span>
+                </form>
+            </div>
+        </section>
+        <section id="segundo-atendimento">
+            <h2>PREENCHA SEUS DADOS</h2>
             <ul class="tutorial">
                 <li><span>1 - Diagnóstico do problema</span> <br> Após o contato, será realizada uma análise do problema da máquina.</li>
                 <li><span>2 - Reparo e manutenção </span><br> O serviço em 98% das ocasiões, é realizado no local sempre que possível.</li>
@@ -72,11 +101,11 @@
                 <label class="label" for="iarea">Problema:
                     <textarea id="iarea" name="mensagem" rows="4" cols="20" placeholder="Descreva o seu problema"></textarea>
                 </label>
-
                 <input type="submit" value="Enviar" class="submit">
-                
-                <span href="#" class="link"><i class="fa-brands fa-square-whatsapp"></i><p>[84]9-9959-2051</p></span>
-                <span href="#" class="link"><i class="fa-brands fa-square-instagram"></i><p>@md.assistenciatecnica</p></span>
+                <div class="links">
+                    <span href="#" class="link"><i class="fa-brands fa-square-whatsapp"></i><p>[84]9-9959-2051</p></span>
+                    <span href="#" class="link"><i class="fa-brands fa-square-instagram"></i><p>@md.assistenciatecnica</p></span>
+                </div>
             </form>
         </section>
         <section id="problemas-section">
