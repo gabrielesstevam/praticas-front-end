@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root{
     --navegação: #2A80D8;
     --aba-navegação: #6AB1E8;
@@ -8,6 +9,8 @@
     --footer: #003A76;
     --transparência: #ffffff00;
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @media screen and (min-width: 1024px) {
     body{
             transition: 0.3s;
@@ -92,6 +95,7 @@
     }
     #atendimentos h2{
         font-size: 1.4em;
+        font-family: "Poppins", sans-serif;
     }
     /*======================*/
     /*== Outro atendimento ====================*/
@@ -114,6 +118,7 @@
         padding: 5px 15px;
         border-radius: 10px;
         font-family: Titulos;
+        margin-bottom: 10px;
     }
     #segundo-atendimento .tutorial{
         margin-top: 20px;
