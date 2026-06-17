@@ -98,6 +98,7 @@ main #listAnnotation{ /*container dos cards*/
 #listAnnotation h3{
     margin: 10px 0px;
     font-size: 2em;
+    word-break: break-all;
 }
 #resumo{
     padding: 5px;
