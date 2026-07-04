@@ -20,22 +20,29 @@
     --gray3: #424242;
 }
 /* ------------ interface --------------------*/
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100vw;
-    height: 100vh;
-}
-.content{
-    background-color: var(--gray1);
-    height: min(600px,60vh);
-    width: min(500px, 80vw);
+.container{
+    background-color: var(--gray3);
+    height: min(465px,80vh);
+    width: min(300px, 90vw);
     border-radius: 10px;
-    box-shadow: 5px 5px 10px var(--gray2);
+    box-shadow: 3px 3px 0px 2px var(--gray1);
 }
-.calcul {
+.led {
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    margin: 10px 0px 0px 10px;
+    border-radius: 50%;
+}
+.off {
+    border: 1px solid var(--gray1);
+    background-color: var(--gray2);
+}
+.on {
+    box-shadow: 0px 0px 5px 1px rgb(9, 255, 0);
+    background-color: rgb(218, 255, 196);
+}
+.display {
     display: flex;
     align-items: center;
 
@@ -44,19 +51,142 @@ main{
     height: 10%;
     margin-top: 10px;
     border-radius: 10px;
-    background-color: var(--green1);
-    outline: 1px solid var(--green0);
+    background-color: var(--green0);
+    outline: 1px solid var(--green2);
     overflow: hidden;
 }
-.calcul .text{
+.display .calc{
     color: white;
-    margin-left: 20px;
+    margin: 0px 15px;
     font-size: min(8vw, 2.5em);
     font-family: TextNumber;
+    word-spacing: -8px;
     text-shadow: 1px 1px 10px var(--green2);
     word-wrap: none;
     white-space: nowrap;
 }
 /* ----------------------- */
 .buttonsContainer{
+    display: flex;
+    flex-flow: column nowrap;
+
+    gap: 10px;
+}
+.row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.row .button {
+    background-color: var(--gray1);
+    border: none;
+    border-radius: 10px;
+    height: min(45px, 13vw);
+    width: min(45px, 13vw);
+    box-shadow: 3px 3px 0px 2px var(--gray2);
+    font-weight: bolder;
+    color: var(--gray3);
+    transition: 0.2s;
+}
+.row .button:hover{
+    background-color: var(--gray0);
+    transform: scale(0.9);
+    box-shadow: 2px 2px 0px 2px var(--gray2);
+}
+.row2 .button {
+    width: 55px;
+}
+.history{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 7%;
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--gray1);
+    box-shadow: 3px 3px 0px 2px var(--gray2);
+    transition: 0.3s;
+    font-weight: bolder;
+    color: var(--gray3);
+}
+.history:hover{
+    background-color: var(--gray0);
+    transform: scale(0.97);
+    box-shadow: 2px 2px 0px 2px var(--gray2);
+}
+/* ----------------------- */
+#modal-1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: min(500px,85vh);
+    width: min(500px,95vw);
+
+    background-color: var(--gray3);
+    border-radius: 20px;
+}
+#modal-1 nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+nav h3{
+    padding: 6px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    color: var(--gray1);
+}
+nav button{
+    border: none;
+    background-color: var(--gray2);
+    color: var(--gray0);
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+nav button:hover{
+    background-color: var(--gray1);
+    color: var(--gray0);
+}
+#modal-1 section{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    gap: 15px;
+
+    height: 80%;
+    margin: 25px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+#modal-1 section::-webkit-scrollbar{
+    display: none;
+}
+#modal-1 section p{
+    display: inline-block;
+
+    font-family: TextNumber;
+    font-size: min(8vw, 1.6em);
+    background-color: var(--gray1);
+    color: var(--gray3);
+    padding: 2px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px 2px var(--gray2);
+    width: 90%;
+    margin: auto;
+
+    transition: 0.2s;
+}
+#modal-1 section p:hover{
+    background-color: var(--gray0);
+    transform: scale(1.05);
+    box-shadow: 2px 2px 0px 2px var(--gray2);
 }
