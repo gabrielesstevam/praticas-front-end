@@ -7,15 +7,56 @@
     font-family: monospace;
 }
 @font-face {
-    font-family: "calculator";
+    font-family: TextNumber;
     src: url(fonts/Calculator.ttf);
 }
 :root{
-    --green0: #5B7D5F;
-    --green1: #5B6B5B;
+    --green0: #354436;
+    --green1: #5B7D5F;
+    --green2: #c2ffc2;
     --gray0: #EBEBEB;
     --gray1: #A1A1A1;
     --gray2: #6B6B6B;
     --gray3: #424242;
 }
 /* ------------ interface --------------------*/
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+}
+.content{
+    background-color: var(--gray1);
+    height: min(600px,60vh);
+    width: min(500px, 80vw);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--gray2);
+}
+.calcul {
+    display: flex;
+    align-items: center;
+
+    margin: auto;
+    width: 95%;
+    height: 10%;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: var(--green1);
+    outline: 1px solid var(--green0);
+    overflow: hidden;
+}
+.calcul .text{
+    color: white;
+    margin-left: 20px;
+    font-size: min(8vw, 2.5em);
+    font-family: TextNumber;
+    text-shadow: 1px 1px 10px var(--green2);
+    word-wrap: none;
+    white-space: nowrap;
+}
+/* ----------------------- */
+.buttonsContainer{
+}
