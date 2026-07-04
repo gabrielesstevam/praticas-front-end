@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* ---------------- configurações gerais ---------------------*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+@font-face {
+    font-family: "calculator";
+    src: url(fonts/Calculator.ttf);
+}
+:root{
+    --green0: #5B7D5F;
+    --green1: #5B6B5B;
+    --gray0: #EBEBEB;
+    --gray1: #A1A1A1;
+    --gray2: #6B6B6B;
+    --gray3: #424242;
+}
+/* ------------ interface --------------------*/
