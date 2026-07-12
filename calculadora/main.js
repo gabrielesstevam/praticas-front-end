@@ -123,10 +123,10 @@ function verifyButton(button){
                             console.log("ERROR :: verifyButton :: Impossível mudar positividade de 0")
                         }
                     } else {
-                        if (listHere[listHere.length - 1][0][0] == "✓"){
+                        if (listHere[listHere.length - 1][0] == "✓"){
                             listHere[listHere.length - 1] = "-" + listHere[listHere.length - 1]
                             updateDisplay()
-                        } else if (listHere[listHere.length - 1][0][0] == "-") {
+                        } else if (listHere[listHere.length - 1][0] == "-") {
                             listHere[listHere.length - 1] = listHere[listHere.length - 1].slice(1)
                             updateDisplay()
                         } else {
@@ -160,19 +160,25 @@ function verifyButton(button){
         return
     }
 }
-function updateDisplay() {
-    let text = ""
-    let idx = 0
-    for (const i of listHere){
-        text += `${i}`
-        if (idx == listHere.length - 1) {
-            break
-        } else {
-            text += ` `
-        }
-        idx ++
+function updateDisplay(error = true) {
+    if (error) {
+        let text = ""
+        let idx = 0
+        for (const i of listHere){
+            text += `${i}`
+            if (idx == listHere.length - 1) {
+                break
+            } else {
+                text += ` `
+            }
+            idx ++
     }
     document.querySelector(".display .calc").innerHTML = text
+    } else {
+        document.querySelector(".display .calc").innerHTML = "ERROR"
+    }
+
+    
 }
 function calculated() {
     let response = []
