@@ -95,7 +95,19 @@ function verifyButton(button){
             }
             case "c":{
                 console.log(listHere[listHere.length - 1][listHere[listHere.length - 1].length - 1])
-                updateDisplay()
+                if (listHere.length > 0){
+                    if (listHere[listHere.length - 1].length == 2 && listHere[listHere.length - 1][listHere[listHere.length - 1].length - 2] == "-"){
+                        listHere[listHere.length - 1] = listHere[listHere.length - 1].slice(0,-2)
+                    } else {
+                        listHere[listHere.length - 1] = listHere[listHere.length - 1].slice(0,-1)
+                    }
+                    if (listHere[listHere.length - 1].length == 0){
+                        listHere.pop()
+                    }
+                    updateDisplay()
+                } else {
+                    console.log("ERROR :: verifyButton :: Sem dígito para apagar")
+                }
                 break
             }
             case "+/-":{
@@ -180,7 +192,7 @@ function calculated() {
                 } 
             } else {
                 listHere = []
-                listHere.push(calList)
+                listHere.push(calList[0])
                 updateDisplay()
             }
             return
