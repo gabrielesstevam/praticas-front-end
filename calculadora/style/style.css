@@ -27,7 +27,7 @@
     border-radius: 10px;
     box-shadow: 3px 3px 0px 2px var(--gray1);
 }
-.led {
+#led {
     display: inline-block;
     height: 5px;
     width: 5px;
