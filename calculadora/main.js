@@ -4,6 +4,7 @@ const led = document.querySelector("#led")
 let listHere = []
 let system = false
 led.classList = "off"
+let memory = localStorage.getItem("memory") || ""
 // funções -------------------------------------
 function writeDisplay(mensage){
     if (!isNaN(parseInt(mensage))){ // mensage is number
@@ -26,20 +27,20 @@ function writeDisplay(mensage){
             if (mensage == "✓"){
                 listHere.push(mensage)
             } else {
-                console.log("ERROR :: writeDisplay :: Operador não pode ser o primeiro dígito")
+                
             return
             }
         } else {
-            console.log(listHere[listHere.length - 1][0])
+            
             if (!isNaN(parseInt(listHere[listHere.length - 1])) || (listHere[listHere.length - 1][0] == "✓" && !isNaN(parseInt(listHere[listHere.length - 1][1]))) || (listHere[listHere.length - 1][0] == "-" && listHere[listHere.length - 1].length > 1)){ // Last Digit is number // Last Digit have ✓ and bumber // Last Digit hava -...
                 if (mensage == "✓" || mensage == "="){
-                    console.log("ERROR :: writeDisplay :: Impossível usar ✓ ou = depois de um número")
+                    
                 } else {
                     if (mensage == "."){
                         if (verifyPoint(listHere[listHere.length - 1])) {
                             listHere[listHere.length - 1] += "."
                         } else {
-                            console.log("ERROR :: writeDisplay :: Mais de 2 pontos não podem ser digitados")
+                            
                         }
                     } else {
                         listHere.push(mensage)
@@ -48,20 +49,19 @@ function writeDisplay(mensage){
             } else { // Last Digit is Operator
                 if (listHere[listHere.length - 1] == "✓"){
                     if (mensage == "✓"){
-                        console.log("ERROR :: writeDisplay :: Operador ja digitado")
+                        
                     }
                 }  else {
                     if (mensage == "✓"){
                         listHere.push(mensage)
                     } else {
-                        console.log("ERROR :: writeDisplay :: Operador ja digitado")
+                        
                     }  
                 }
             }
         }
     }
     updateDisplay()
-    console.log(listHere)
 }
 function verifyButton(button){
     switch (button.id){
@@ -80,12 +80,24 @@ function verifyButton(button){
     if (system){
         switch (button.id){
             case "mrc":{
+                memory = calculatedMemory()
+                localStorageMem()
                 break            
             }
             case "m-":{
-                break
+                calculated()
+                let currentValue = parseFloat(listHere[0])       // guarda o valor calculado
+                listHere = []
+                listHere.push(`${parseFloat(memory) - currentValue}`) // agora usa o valor guardado
+                updateDisplay()
+                break                                             // evita fall-through pro m+
             }
             case "m+":{
+                calculated()
+                let currentValue = parseFloat(listHere[0])       // guarda o valor calculado
+                listHere = []
+                listHere.push(`${parseFloat(memory) + currentValue}`) // agora usa o valor guardado
+                updateDisplay()
                 break
             }
             case "ac":{
@@ -94,7 +106,6 @@ function verifyButton(button){
                 break
             }
             case "c":{
-                console.log(listHere[listHere.length - 1][listHere[listHere.length - 1].length - 1])
                 if (listHere.length > 0){
                     if (listHere[listHere.length - 1].length == 2 && listHere[listHere.length - 1][listHere[listHere.length - 1].length - 2] == "-"){
                         listHere[listHere.length - 1] = listHere[listHere.length - 1].slice(0,-2)
@@ -106,7 +117,6 @@ function verifyButton(button){
                     }
                     updateDisplay()
                 } else {
-                    console.log("ERROR :: verifyButton :: Sem dígito para apagar")
                 }
                 break
             }
@@ -120,7 +130,6 @@ function verifyButton(button){
                             listHere[listHere.length - 1] = "-" + listHere[listHere.length - 1]
                             updateDisplay()
                         } else if (parseFloat(listHere[listHere.length - 1]) == 0){
-                            console.log("ERROR :: verifyButton :: Impossível mudar positividade de 0")
                         }
                     } else {
                         if (listHere[listHere.length - 1][0] == "✓"){
@@ -130,21 +139,18 @@ function verifyButton(button){
                             listHere[listHere.length - 1] = listHere[listHere.length - 1].slice(1)
                             updateDisplay()
                         } else {
-                            console.log("ERROR :: verifyButton :: Impossível mudar positividade de operador")
                         }
                     }
-                } else {
-                    console.log("ERROR :: verifyButton :: Nenhum número digitado")
                 }
-                console.log(listHere)
                 break
             }
             case "=":{
                 if (listHere.length < 3 && listHere.length > 1 && listHere.length < 1){
-                    console.log("ERROR :: verifyButton :: Lista com menos de 3 argumentos para realizar operação")
+
                 }else {
                     calculated()
                 }
+                break
             }
             case "operator":{
                 if (button.innerHTML == "+/-"){
@@ -156,7 +162,6 @@ function verifyButton(button){
             }
         }
     } else {
-        console.log("ERROR :: verifyButton :: Calculadora desligada")
         return
     }
 }
@@ -183,7 +188,6 @@ function updateDisplay(error = true) {
 function calculated() {
     let response = []
     let calList = [...listHere]
-    console.log(calList)
     while (true){
         if (calList.length == 1){
             if (calList[0].includes("✓")){
@@ -202,6 +206,31 @@ function calculated() {
                 updateDisplay()
             }
             return
+        } else {
+            let responseFunction = operatorCalculated([calList[0],calList[1],calList[2]])
+            calList.splice(0, 3)
+            calList.unshift(`${responseFunction}`)
+        }
+    }
+}
+function calculatedMemory() {
+    let response = []
+    let calList = [...listHere]
+    while (true){
+        if (calList.length == 1){
+            if (calList[0].includes("✓")){
+                if (calList[0][0] == "-"){
+                    listHere = []
+                    listHere.push(-source(parseFloat(calList[0].slice(2))))
+                } else {
+                    listHere = []
+                    listHere.push(source(parseFloat(calList[0].slice(1))))
+                } 
+            } else {
+                listHere = []
+                listHere.push(calList[0])
+            }
+            return calList[0]
         } else {
             let responseFunction = operatorCalculated([calList[0],calList[1],calList[2]])
             calList.splice(0, 3)
@@ -264,9 +293,23 @@ function verifyPoint(number) {
         return false
     }
 }
+function localStorageMem(){
+    localStorage.setItem("memory", memory)
+}
+function resetMemory(){
+    memory = ""
+    localStorage.removeItem("memory")
+}
 // eventos -------------------------------------
 for (const button of buttons){ // event click in buttons
-    button.addEventListener("click", () => {
+    if (button.id == "mrc"){
+        button.addEventListener("dblclick", () => {
+            resetMemory()
+        })
+    }
+
+    button.addEventListener("click", (event) => {
         verifyButton(event.target)
     })
 }
+

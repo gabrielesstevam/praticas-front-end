@@ -22,8 +22,9 @@
 /* ------------ interface --------------------*/
 .container{
     background-color: var(--gray3);
-    height: min(465px,80vh);
+    height: min(400px,80vh);
     width: min(300px, 90vw);
+    padding-bottom: 10px;
     border-radius: 10px;
     box-shadow: 3px 3px 0px 2px var(--gray1);
 }
@@ -69,7 +70,6 @@
 .buttonsContainer{
     display: flex;
     flex-flow: column nowrap;
-
     gap: 10px;
 }
 .row{
