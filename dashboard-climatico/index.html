@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBord Climático</title>
+    <title>DashBoard Climático</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    
+    <main class="container-main">
+        <div class="wallpaper">
+            <video class="wallpaper-video" src="assets/videos/light-mode.mp4" autoplay></video>
+        </div>
+        <div class="container-header">
+            <span class="logo-side">
+                <img src="assets/images/logo.png" alt="logo">
+                <p>DashBoard Climático</p>
+            </span>
+            <span class="button-side">
+                <button id="button-theme">Modo Escuro</button>
+                <button id="button-fixed-modal">Fixados</button>
+            </span>
+        </div>
+        <div class="container-social">
+            <a class="button-github" href="https://www.linkedin.com/in/gabrielesstevam/" target="_blank">
+                <i class="fa-brands fa-square-github"></i>
+                <p>gabrielesstevam</p>
+            </a>
+            <a class="button-linkedin" href="https://www.linkedin.com/in/gabrielesstevam/" target="_blank">
+                <i class="fa-brands fa-square-linkedin"></i>
+                <p>gabrielesstevam</p>
+            </a>
+        </div>
+        <form class="container-search">
+            <span>
+                <label for="isearch-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
+                <input type="text" name="search-bar" id="isearch-bar">
+            </span>
+            <input type="submit" value="Buscar">
+        </form>
+        <div class="container-itens-fixed">
+            <div class="item-fixed">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="item-city">Natal, Brazil</p>
+                <i class="fa-solid fa-temperature-quarter"></i>
+                <p class="item-temperature">32 °C</p>
+            </div>
+        </div>
+    </main>
+    <section class="container-response">
+        <h2 class="title-search">Resultados de Busca</h2>
+        <hr>
+        <div class="container-itens-response">
+            <div class="item-response">
+                <button class="button-item-fixed" id="button-item-fixed"><i class="fa-solid fa-thumbtack"></i></button>
+                <button class="button-item-view" id="button-view"><i class="fa-solid fa-clipboard"></i></button>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
