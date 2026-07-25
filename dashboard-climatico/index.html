@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard Climático</title>
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <main class="container-main">
-        <div class="wallpaper">
-            <video class="wallpaper-video" src="assets/videos/light-mode.mp4" autoplay></video>
-        </div>
-        <div class="container-header">
+        <video class="wallpaper-video" src="assets/videos/light-mode.webm" fetchpriority="high" loop autoplay muted playsinline></video>
+        <div class="container-header glass shadow">
             <span class="logo-side">
-                <img src="assets/images/logo.png" alt="logo">
+                <img src="assets/images/logo.png" alt="logo" class="logo">
                 <p>DashBoard Climático</p>
             </span>
             <span class="button-side">
@@ -24,24 +22,24 @@
             </span>
         </div>
         <div class="container-social">
-            <a class="button-github" href="https://www.linkedin.com/in/gabrielesstevam/" target="_blank">
-                <i class="fa-brands fa-square-github"></i>
+            <a class="button-github glass shadow" href="https://github.com/gabrielesstevam" target="_blank">
+                <i class="fa-brands fa-github"></i>
                 <p>gabrielesstevam</p>
             </a>
-            <a class="button-linkedin" href="https://www.linkedin.com/in/gabrielesstevam/" target="_blank">
+            <a class="button-linkedin glass shadow" href="https://www.linkedin.com/in/gabrielesstevam/" target="_blank">
                 <i class="fa-brands fa-square-linkedin"></i>
                 <p>gabrielesstevam</p>
             </a>
         </div>
         <form class="container-search">
-            <span>
+            <span class="glass shadow">
                 <label for="isearch-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
                 <input type="text" name="search-bar" id="isearch-bar">
             </span>
-            <input type="submit" value="Buscar">
+            <input type="submit" value="Buscar" class="button-search glass shadow">
         </form>
         <div class="container-itens-fixed">
-            <div class="item-fixed">
+            <div class="item-fixed glass shadow">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="item-city">Natal, Brazil</p>
                 <i class="fa-solid fa-temperature-quarter"></i>
@@ -53,11 +51,18 @@
         <h2 class="title-search">Resultados de Busca</h2>
         <hr>
         <div class="container-itens-response">
-            <div class="item-response">
-                <button class="button-item-fixed" id="button-item-fixed"><i class="fa-solid fa-thumbtack"></i></button>
-                <button class="button-item-view" id="button-view"><i class="fa-solid fa-clipboard"></i></button>
+            <div class="item-response shadow">
+                <span>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="item-city">Natal, Brazil</p>
+                    <i class="fa-solid fa-temperature-quarter"></i>
+                    <p class="item-temperature">32 °C</p>
+                </span>
+                <span>
+                    <button class="button-item-fixed" id="button-item-fixed"><i class="fa-solid fa-thumbtack"></i></button>
+                    <button class="button-item-view" id="button-view"><i class="fa-solid fa-clipboard"></i></button>
+                </span>
             </div>
-        </div>
     </section>
 </body>
 </html>
