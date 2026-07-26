@@ -26,12 +26,13 @@
     --green: #00FF00;
     --yellow: #ff9900;
 }
-body.darkmode{ /* variáveis do tema escuro*/
+body.darkMode{ /* variáveis do tema escuro*/
     --color1-x: #576065;
     --color1-y: #7B8488;
     --color2-x: #252624;
     --color2-y: #4D4C4D;
     --color3: #FFFFFF;
+    background-color: var(--color2-y);
 }
 .shadow{
     box-shadow: 2px 2px 5px #00000040;
