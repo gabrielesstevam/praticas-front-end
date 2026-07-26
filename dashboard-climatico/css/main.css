@@ -74,6 +74,14 @@ body{
     visibility: hidden;
     opacity: 0;
 }
+/* block-view ========================================= */
+.block-view {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    height: 100vh;
+    width: 100vw;
+}
 /* wallpaper ========================================= */
 .container-main{
     position: relative;
@@ -458,6 +466,11 @@ body{
         opacity: 0;
     }
 }
+@keyframes enterTheme {
+    100%{
+        left: 100vw;
+    }
+}
 /* criação de animações =========================================*/
 .click {
     animation: click;
@@ -472,4 +485,7 @@ body{
     animation: disappear;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+}
+.enter {
+    animation: enterTheme 1.9s forwards;
 }
