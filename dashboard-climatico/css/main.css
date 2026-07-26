@@ -100,7 +100,9 @@ body{
     padding: 10px;
     width: min(80vw, 500px);
     border-radius: 20px;
-
+    
+    visibility: hidden;
+    opacity: 0;
 }
 .item-modal-fixed {
     display: flex;
@@ -139,6 +141,8 @@ body{
     border-radius: 20px;
     overflow: hidden;
     
+    visibility: hidden;
+    opacity: 0;
 }
 .container-modal-description .front-image{
     background-image: url(../assets/images/tornado-sand.jpg);
@@ -318,7 +322,7 @@ body{
 .container-response{
     height: 500px;
     background-image: linear-gradient(to top, var(--color2-y), var(--color2-x));
-    box-shadow: 1px 1px 5px 5px var(--color2-x);
+    box-shadow: 1px -15px 10px 5px var(--color2-x);
 }
 /* response-title ========================================= */
 .container-response .title-search {
