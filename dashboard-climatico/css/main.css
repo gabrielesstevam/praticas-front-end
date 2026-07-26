@@ -316,7 +316,7 @@ body{
 }
 /* response ========================================= */
 .container-response{
-    height: 470px;
+    height: 500px;
     background-image: linear-gradient(to top, var(--color2-y), var(--color2-x));
     box-shadow: 1px 1px 5px 5px var(--color2-x);
 }
