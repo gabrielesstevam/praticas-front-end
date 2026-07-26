@@ -10,6 +10,7 @@
     padding: 0px; 
     box-sizing: border-box; 
     font-family: prompt;
+    transition: 0.3s;
 }
 :root{
     --white-15: #FFFFFF26;
@@ -321,7 +322,7 @@ body{
 /* response ========================================= */
 .container-response{
     height: 500px;
-    background-image: linear-gradient(to top, var(--color2-y), var(--color2-x));
+    background-color: var(--color2-x);
     box-shadow: 1px -15px 10px 5px var(--color2-x);
 }
 /* response-title ========================================= */
