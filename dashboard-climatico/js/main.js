@@ -4,7 +4,6 @@ import * as UI from "./ui.js"
 // variables -----------------
 const htmlElements = {
     button_theme:document.getElementById("button-theme"),
-
 }
 let systemVariables = {
     isSwitchingTheme:true,
@@ -19,6 +18,6 @@ htmlElements.button_theme.addEventListener("click",() => { // trocar de tema
         UI.themeSwitch()
         setTimeout(() => {
             systemVariables.isSwitchingTheme = true
-        }, 3000)
+        }, 1000)
     }
 })
