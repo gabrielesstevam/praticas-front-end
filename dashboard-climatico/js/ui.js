@@ -1,4 +1,4 @@
-// theme-----------------------------------
+// theme -----------------------------------
 export function themeLoad(){ // carrega o tema
     const theme = localStorage.getItem("themeStorage") || "light"
     switch (theme){

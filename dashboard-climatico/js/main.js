@@ -5,9 +5,9 @@ import * as UI from "./ui.js"
 const button_theme = document.getElementById("button-theme")
 
 // events --------------------
-window.addEventListener("load", () => {
+window.addEventListener("load", () => { // carregar tema
     UI.themeLoad()
 })
-button_theme.addEventListener("click",() => {
+button_theme.addEventListener("click",() => { // trocar de tema
     UI.themeSwitch()
 })
