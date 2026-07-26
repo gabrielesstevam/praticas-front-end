@@ -139,12 +139,12 @@ body{
     height: min(95vw, 390px);
     border-radius: 20px;
     overflow: hidden;
-
+/* 
     visibility: hidden;
-    opacity: 0;
+    opacity: 0; */
 }
 .container-modal-description .front-image{
-    background-image: url(../assets/images/snow.jpg);
+    background-image: url(../assets/images/tornado-sand.jpg);
     background-position: center center;
     background-size: cover;
     height: 30%;
