@@ -24,6 +24,7 @@ function limitActive(def1, def2=()=>{}, def3=()=>{}) {
 }
 // events ----------------------
 window.addEventListener("load", () => { // carregar tema
+    UI.loadAnimation()
     UI.themeLoad()
 })
 htmlElements.button_theme.addEventListener("click",() => { // trocar de tema

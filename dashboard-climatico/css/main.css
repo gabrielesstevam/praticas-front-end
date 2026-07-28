@@ -373,6 +373,29 @@ body{
     background: none;
     transition: 0.3s;
 }
+/* loading ================================================ */
+.loading-wallpaper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: 0;
+    position: fixed;
+
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0);
+}
+.loading {
+    position: absolute;
+
+    border-radius:50%;
+    height: min(20vw, 100px);
+    width: min(20vw, 100px);
+    border: min(2vw,15px) solid rgb(248, 246, 246);
+    border-top: min(2vw,15px) solid rgb(129, 129, 129); 
+}
+
 /* media-queries ========================================= */
 @media screen and (min-width: 700px){
     .container-main{ /* altera tamanho do wallpaper */
@@ -461,6 +484,12 @@ body{
         left: 100vw;
     }
 }
+@keyframes loading{
+    100% {
+        transform: translate(-50%, -50%);
+        transform: rotate(360deg);
+    }
+}
 /* criação de animações =========================================*/
 .click {
     animation: click;
@@ -477,4 +506,10 @@ body{
     animation: disappear;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+}
+.loading-animation {
+    animation: loading;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }

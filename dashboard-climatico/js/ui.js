@@ -129,3 +129,16 @@ export function clickAnimation(targetId){
         button.classList.remove("click")
     }, 1000);
 }
+export function loadAnimation(){
+    const loading = document.querySelector(".loading")
+    const loadingWallpaper = document.querySelector(".loading-wallpaper")
+    loading.classList.add("loading-animation")
+    setTimeout(() => {
+        close(loading)
+        close(loadingWallpaper)
+        setTimeout(() => {
+            loading.remove()
+            loadingWallpaper.remove()
+        }, 2000);
+    }, 500);
+}
