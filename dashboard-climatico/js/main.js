@@ -36,7 +36,7 @@ htmlElements.button_modal_fixed.addEventListener("click",() => { // abrir/fechar
     }
 })
 document.addEventListener("click",(event) => {
-    if (event.target.id == "button_item_view"){
+    if (event.target.id == "button-view" || event.target.id == "button-view-i"){
         limitActive(() => UI.modal("document"))
     }
 })

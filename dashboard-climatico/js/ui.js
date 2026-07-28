@@ -1,3 +1,4 @@
+// variables -------------------------------------
 const modais = {
     fixed:document.querySelector(".container-modal-fix"),
     document:document.querySelector(".container-modal-description")
@@ -61,9 +62,9 @@ function themeModify(theme) { // modifica o tema
 // fixed_modal -----------------------------------
 export function modal(modal) {
     if (modais[modal].classList.contains("closed")){
-        openModal(modais[modal])
+        open(modais[modal])
     } else if (modais[modal].classList.contains("opened")){
-        closeModal(modais[modal])
+        close(modais[modal])
     }
 }
 function open(UIelement){

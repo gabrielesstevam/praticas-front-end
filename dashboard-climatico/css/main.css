@@ -49,9 +49,11 @@ body{
 }
 .opened {
     opacity: 100;
+    pointer-events: auto;
 }
 .closed {
     opacity: 0;
+    pointer-events: none;
 }
 /* aviso =========================================*/
 .information {
