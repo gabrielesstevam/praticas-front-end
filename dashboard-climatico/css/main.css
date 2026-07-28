@@ -21,11 +21,10 @@
     --color2-x: #FFFFFF;
     --color2-y: #FFFFFF;
     --color3: #6F80A3;
-    --red-50: #681b1b80;
-    --red: #FF0000;
+    --yellow-50: #a59c1e80;
+    --yellow: #ffee00;
     --green-50: #178a1780;
     --green: #00FF00;
-    --yellow: #ff9900;
 }
 body.darkMode{ /* variáveis do tema escuro*/
     --color1-x: #576065;
@@ -35,9 +34,10 @@ body.darkMode{ /* variáveis do tema escuro*/
     --color3: #FFFFFF;
     background-color: var(--color2-y);
 }
+
+/* custom =======================================*/
 .shadow{
     box-shadow: 2px 2px 5px #00000040;
-    
 }
 .glass {
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -46,6 +46,12 @@ body.darkMode{ /* variáveis do tema escuro*/
 }
 body{
     position: relative;
+}
+.opened {
+    opacity: 100;
+}
+.closed {
+    opacity: 0;
 }
 /* aviso =========================================*/
 .information {
@@ -60,20 +66,14 @@ body{
     font-size: min(3vw, 0.9em);
 }
 .warn{
-    border: 1px solid var(--red);
-    background-color: var(--red-50);
+    border: 1px solid var(--yellow);
+    background-color: var(--yellow-50);
     color: var(--yellow);
-
-    visibility: hidden;
-    opacity: 0;
 }
 .alert {
     border: 1px solid var(--green);
     background-color: var(--green-50);
     color: var(--green);
-    
-    visibility: hidden;
-    opacity: 0;
 }
 /* wallpaper ========================================= */
 .container-main{
@@ -98,12 +98,11 @@ body{
     right: min(2vw, 100px);
     gap: min(2vw, 5px);
 
+    color: var(--white);
     padding: 10px;
     width: min(80vw, 500px);
     border-radius: 20px;
-    
-    visibility: hidden;
-    opacity: 0;
+
 }
 .item-modal-fixed {
     display: flex;
@@ -111,7 +110,6 @@ body{
     align-items: center;
     
     font-size: min(3vw, 0.9em);
-    color: var(--white);
     padding: min(1vw, 10px) 2vw;
     border-radius: 20px;
 }
@@ -141,9 +139,7 @@ body{
     height: min(95vw, 390px);
     border-radius: 20px;
     overflow: hidden;
-    
-    visibility: hidden;
-    opacity: 0;
+
 }
 .container-modal-description .front-image{
     background-image: url(../assets/images/tornado-sand.jpg);
@@ -473,6 +469,7 @@ body{
     animation: emerge;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
 }
 .disappear {
     animation: disappear;
