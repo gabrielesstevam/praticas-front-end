@@ -7,7 +7,7 @@ const pop_pups = {
     alertInterface:document.querySelector(".alert"),
     warnInterface:document.querySelector(".warn")
 }
-// alert ----------------------------------------
+// pop-up ----------------------------------------
 export function alert(mensage){
     pop_pups.alertInterface.innerHTML = mensage
     open(pop_pups.alertInterface)
@@ -59,8 +59,8 @@ function themeModify(theme) { // modifica o tema
     document.querySelector(".wallpaper-video").src = `assets/videos/${theme}-mode.webm`
     localStorage.setItem("themeStorage", theme)
 }
-// fixed_modal -----------------------------------
-export function modal(modal) {
+// modais -----------------------------------
+export function modal(modal, targetId) {
     if (modais[modal].classList.contains("closed")){
         open(modais[modal])
     } else if (modais[modal].classList.contains("opened")){
@@ -112,3 +112,20 @@ function closeAll(UIelement){
         }, 200);
     }
 }    
+// document_modal -----------------------------------
+export function documentPosition(referenceBlock){
+    const item = referenceBlock
+    const itemPosition = item.getBoundingClientRect()
+   
+    modais["document"].style.position = "absolute";
+    modais["document"].style.top = `${itemPosition.top - modais["document"].offsetHeight}px`;
+    modais["document"].style.left = `${itemPosition.left}px`;
+}
+//animation -----------------------------------------
+export function clickAnimation(targetId){
+    const button = document.getElementById(targetId)
+    button.classList.add("click")
+    setTimeout(() => {
+        button.classList.remove("click")
+    }, 1000);
+}

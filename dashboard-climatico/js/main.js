@@ -11,10 +11,12 @@ let systemVariables = { // variáveis de sistema
     itens_fixed_qnt:0
 }
 //functions --------------------
-function limitActive(def) {
+function limitActive(def1, def2=()=>{}, def3=()=>{}) {
     if (systemVariables.isClick) {
         systemVariables.isClick = false
-        def()
+        def3()
+        def1()
+        def2()
         setTimeout(() => {
             systemVariables.isClick = true
         }, 500)
@@ -27,9 +29,9 @@ window.addEventListener("load", () => { // carregar tema
 htmlElements.button_theme.addEventListener("click",() => { // trocar de tema
     limitActive(UI.themeSwitch)
 })
-htmlElements.button_modal_fixed.addEventListener("click",() => { // abrir/fechar modal de fixos
+htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/fechar modal de fixos
     if (systemVariables.itens_fixed_qnt > 0){
-        limitActive(() => UI.modal("fixed"))
+        limitActive(() => UI.modal("fixed", event.target.id))
     } else {
         limitActive(() => UI.warn("Nenhuma cidade foi fixada ainda"))
         console.log("Nenhuma cidade encontrada :: fixedbutton")
@@ -37,6 +39,10 @@ htmlElements.button_modal_fixed.addEventListener("click",() => { // abrir/fechar
 })
 document.addEventListener("click",(event) => {
     if (event.target.id == "button-view" || event.target.id == "button-view-i"){
-        limitActive(() => UI.modal("document"))
+        if (document.querySelector(".container-modal-description").classList.contains("opened")){
+            limitActive(() => UI.modal("document"), () => UI.clickAnimation(event.target.id))
+        } else {
+            limitActive(() => UI.modal("document"),() => UI.clickAnimation(event.target.id),() => UI.documentPosition(event.target.closest(".item-response")))
+        }
     }
 })

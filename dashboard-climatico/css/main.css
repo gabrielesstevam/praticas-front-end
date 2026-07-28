@@ -133,7 +133,6 @@ body{
     position: absolute;
     top: 50%;
     right: 50%;
-    transform: translate(50%, -50%);
 
     color: var(--white);
     font-size: min(3vw, 0.9em);
@@ -427,16 +426,16 @@ body{
 /* criação de animações =========================================*/
 @keyframes click {
     0% {
-        transform: translate(0px, 4px);
+        transform: translate(0px, 3px);
     }
     25% {
-        transform: translate(0px, -4px);
+        transform: translate(0px, -3px);
     }
     50% {
-        transform: translate(0px, 4px);
+        transform: translate(0px, 3px);
     }
     75% {
-        transform: translate(0px, -4px);
+        transform: translate(0px, -3px);
     }
     100% {
         transform: translate(0px, 0px);
@@ -466,6 +465,7 @@ body{
 .click {
     animation: click;
     animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
 }
 .emerge {
     animation: emerge;
