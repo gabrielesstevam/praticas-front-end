@@ -62,6 +62,7 @@ body{
     left: 50%;
     transform: translateX(-50%);
 
+    word-spacing: 1px;
     text-align: center;
     padding: min(2vw, 5px) min(3vw, 10px);
     border-radius: 20px;
@@ -81,12 +82,12 @@ body{
 .container-main{
     position: relative;
     overflow: hidden;
-    height: 320px;
+    height: 380px;
     color: var(--white);
 }
 .wallpaper-video{
     position: absolute;
-    width: 200vw;
+    width: 280vw;
     z-index: -1;
     object-fit: cover;
 }
@@ -131,8 +132,6 @@ body{
 /* modal-description ========================================= */
 .container-modal-description{
     position: absolute;
-    top: 50%;
-    right: 50%;
 
     color: var(--white);
     font-size: min(3vw, 0.9em);
@@ -320,7 +319,7 @@ body{
 .container-response{
     height: 500px;
     background-color: var(--color2-x);
-    box-shadow: 1px -15px 10px 5px var(--color2-x);
+    box-shadow: 1px -15px 10px 8px var(--color2-x);
 }
 /* response-title ========================================= */
 .container-response .title-search {

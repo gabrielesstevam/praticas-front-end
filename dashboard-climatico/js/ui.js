@@ -50,11 +50,15 @@ export function themeSwitch(){ // troca o tema
     }
 }
 function themeModify(theme) { // modifica o tema
+    const textTheme = document.getElementById("button-theme")
+
     let bodyClass = document.body.classList
     if (theme == "light"){
         bodyClass.remove("darkMode")
+        textTheme.innerHTML = "Modo Escuro"
     } else {
         bodyClass.add("darkMode")
+        textTheme.innerHTML = "Modo Claro"
     }
     document.querySelector(".wallpaper-video").src = `assets/videos/${theme}-mode.webm`
     localStorage.setItem("themeStorage", theme)
@@ -68,23 +72,19 @@ export function modal(modal, targetId) {
     }
 }
 function open(UIelement){
+    UIelement.classList.add("emerge")
     setTimeout(() => {
-        UIelement.classList.add("emerge")
-        setTimeout(() => {
-            UIelement.classList.remove("closed")
-            UIelement.classList.add("opened")
-            UIelement.classList.remove("emerge")
-        }, 200);
+        UIelement.classList.remove("closed")
+        UIelement.classList.add("opened")
+        UIelement.classList.remove("emerge")
     }, 200);
 }
 function close(UIelement){
+    UIelement.classList.add("disappear")
     setTimeout(() => {
-        UIelement.classList.add("disappear")
-        setTimeout(() => {
-            UIelement.classList.remove("opened")
-            UIelement.classList.add("closed")
-            UIelement.classList.remove("disappear")
-        }, 200);
+        UIelement.classList.remove("opened")
+        UIelement.classList.add("closed")
+        UIelement.classList.remove("disappear")
     }, 200);
 }
 function closeAll(UIelement){
@@ -118,8 +118,16 @@ export function documentPosition(referenceBlock){
     const itemPosition = item.getBoundingClientRect()
    
     modais["document"].style.position = "absolute";
-    modais["document"].style.top = `${itemPosition.top - modais["document"].offsetHeight}px`;
-    modais["document"].style.left = `${itemPosition.left}px`;
+    modais["document"].style.transform = "none";
+
+    modais["document"].style.top = `${itemPosition.top + window.scrollY - modais["document"].offsetHeight - 10}px`;
+
+    modais["document"].style.left = `${
+        itemPosition.left +
+        window.scrollX +
+        (item.offsetWidth / 2) -
+        (modais["document"].offsetWidth / 2)
+    }px`;
 }
 //animation -----------------------------------------
 export function clickAnimation(targetId){
