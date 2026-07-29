@@ -1,10 +1,11 @@
 // imports -------------------
 import * as UI from "./ui.js"
+import * as WS from "./weatherService.js"
 
 // variables -----------------
 const htmlElements = { // elementos html
     button_theme:document.getElementById("button-theme"),
-    button_modal_fixed:document.getElementById("button-fixed-modal")
+    button_modal_fixed:document.getElementById("button-fixed-modal"),
 }
 let systemVariables = { // variáveis de sistema
     isClick:true,
@@ -35,7 +36,6 @@ htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/f
         limitActive(() => UI.modal("fixed", event.target.id))
     } else {
         limitActive(() => UI.warn("Nenhuma cidade foi fixada ainda"))
-        console.log("Nenhuma cidade encontrada :: fixedbutton")
     }
 })
 document.addEventListener("click",(event) => {
@@ -47,3 +47,15 @@ document.addEventListener("click",(event) => {
         }
     }
 })
+document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault(); // bloqueia o reload da página
+
+    if (/\d/.test(document.getElementById("isearch-bar").value)) {
+        UI.warn("Digite apenas letras")
+    } else if (document.getElementById("isearch-bar").value.length < 1){
+        UI.warn("Digite mais que uma letra")
+    } else {
+        
+    }
+
+});
