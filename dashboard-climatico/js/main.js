@@ -1,7 +1,7 @@
 // imports ///////////////////////////////////////////
 import * as UI from "./ui.js"
 import * as WS from "./weatherService.js"
-// localStorage.clear()
+localStorage.clear()
 // variables ///////////////////////////////////////////
 const htmlElements = { // elementos html
     button_theme:document.getElementById("button-theme"),
@@ -14,12 +14,13 @@ let systemVariables = { // variáveis de sistema
 }
 
 //functions ///////////////////////////////////////////
-function limitActive(f1, f2=()=>{}, f3=()=>{}) { // limitador
+function limitActive(f1, f2=()=>{}, f3=()=>{}, f4=()=>{}) { // limitador
     if (systemVariables.isClick) {
         systemVariables.isClick = false
         f1()
         f2()
         f3()
+        f4()
         setTimeout(() => {
             systemVariables.isClick = true
         }, 500)
@@ -54,7 +55,9 @@ document.addEventListener("click",(event) => { // abrir/fechar modal de document
             limitActive(
                 () => UI.clickAnimation(event.target.id),
                 () => UI.documentPosition(event.target.closest(".item-response")),
-                () => UI.modal("document"))
+                () => UI.modal("document"),
+                () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0])
+            )
         }
     }
 })
@@ -66,7 +69,7 @@ htmlElements.content_form.addEventListener('submit', (event) => { // pesquisar, 
     } else if (document.getElementById("isearch-bar").value.length <= 1){ // menor ou igual a um dígito
         UI.warn("Digite mais que uma letra")
     } else {
-        limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value))
+        limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value.trim()))
     }
 
 });

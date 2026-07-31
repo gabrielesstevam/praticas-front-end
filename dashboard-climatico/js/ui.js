@@ -137,7 +137,7 @@ export function makeItemStorage(city){
 
     // HTML //
     cityName.innerHTML = `${city.name}, ${city.country}`
-    cityTemperature.innerHTML = `${(city.temp - 273.15).toFixed(1)} °C`
+    cityTemperature.innerHTML = `${city.temp} °C`
 
     // classes //
     item_container.classList.add("item-response","shadow","closed")
@@ -155,6 +155,7 @@ export function makeItemStorage(city){
     // id ///
     icon_fixed.id = "button-fixed-i"
     icon_doc.id = "button-view-i"
+    button_doc.id = "button-view"
 
     // implementação //
     span1.append(iconLocation, cityName, iconTemperature, cityTemperature)
@@ -188,6 +189,24 @@ export function documentPosition(referenceBlock){
         (item.offsetWidth / 2) -
         (modais_element["document"].offsetWidth / 2)
     }px`;
+}
+export function updateDocument(cityName){
+    console.log("OIIIIIII")
+    const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
+    const cityObj = searchLocal[cityName]
+    function syncInfo(query, object){
+        modais_element.document.querySelector(`.description-${query}`).innerHTML = object
+    }
+    modais_element.document.querySelector(".front-image").style.backgroundImage = `url(${cityObj.image})`
+    syncInfo("name", `${cityObj.name}, ${cityObj.country}`)
+    syncInfo("climatic", `${cityObj.type_climatic}`)
+    syncInfo("temperature", `${cityObj.temp} °C`)
+    syncInfo("max-temperature", `${cityObj.tempMax} °C`)
+    syncInfo("min-temperature", `${cityObj.tempMin} °C`)
+    syncInfo("wind", `${cityObj.windSpeed} m/s`)
+    syncInfo("cloud", `${cityObj.clouds} %`)
+    syncInfo("humidity", `${cityObj.humidity} %`)
+    syncInfo("pressure", `${cityObj.pressure} hPa`)
 }
 
 //animation functions ///////////////////////////////////////////

@@ -285,6 +285,9 @@ body{
     margin-left: 5px;
     font-size: min(4vw, 0.8em);
 }
+.container-search span input::placeholder{
+    color: var(--white-40);
+}
 .container-search input[type=submit]{
     color: white;
     font-size: min(4vw, 0.8em);
