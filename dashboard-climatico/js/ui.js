@@ -67,7 +67,7 @@ function themeModify(theme) { // modifica o tema
 }
 
 // modais_element functions ///////////////////////////////////////////
-export function modal(modal, targetId) {
+export function modal(modal) {
     if (modais_element[modal].classList.contains("closed")){
         open(modais_element[modal])
     } else if (modais_element[modal].classList.contains("opened")){
@@ -115,6 +115,7 @@ function closeAll(UIelement){
         }, 200);
     }
 }
+
 // itens functions ///////////////////////////////////////////
 // itens storage  /////////////////////////////
 export function makeItemStorage(city){
@@ -159,20 +160,88 @@ export function makeItemStorage(city){
 
     // implementação //
     span1.append(iconLocation, cityName, iconTemperature, cityTemperature)
-
+    /////////
     button_fixed.append(icon_fixed)
     button_doc.append(icon_doc)
     span2.append(button_fixed, button_doc)
-    
+    ////////
     item_container.append(span1, span2)
     container.append(item_container)
-
+    ///////
     open(item_container)
 }
+
 // itens fixed  ///////////////////////////////
+export function makeItemFixed(city){
+    const container_fixed = document.querySelector(".container-itens-fixed")
+    const container_fixed_modal = document.querySelector(".container-modal-fix")
 
-// itens fixed_modal  ///////////////////////
+    // item fixado //
+    // criação dos elementos //
+    const item_fixed = document.createElement("div")
+    const icone_location = document.createElement("i")
+    const item_name = document.createElement("p")
+    const icone_temperature = document.createElement("i")
+    const item_temperature = document.createElement("p")
+    // classes //
+    item_fixed.classList.add("item-fixed", "glass", "shadow")
+    icone_location.classList.add("fa-solid","fa-location-dot")
+    item_name.classList.add("item-city")
+    icone_temperature.classList.add("fa-solid","fa-temperature-quarterd")
+    item_temperature.classList.add("item-temperature")
+    // HTML //
+    item_name.innerHTML = `${city.name}, ${city.country}`
+    item_temperature.innerHTML = `${city.temp} °C`
+    // implementação //
+    item_fixed.append(icone_location,item_name,icone_temperature,item_temperature)
+    container_fixed.append(item_fixed)
 
+
+    // item fixado modal //
+    // criação dos elementos //
+    const item_modal_fixed = document.createElement("div")
+    const span = document.createElement("span")
+    const icone_location_modal = document.createElement("i")
+    const item_name_modal = document.createElement("p")
+    const button_trash = document.createElement("button")
+    const icone_trash = document.createElement("i")
+    // classes //
+    item_modal_fixed.classList.add("item-modal-fixed","glass","shadow")
+    icone_location_modal.classList.add("fa-solid","fa-location-dot")
+    item_name_modal.classList.add("item-city")
+    button_trash.classList.add("button-trash")
+    icone_trash.classList.add("fa-solid", "fa-trash")
+    // id //
+    button_trash.id = "button-trash"
+    icone_trash.id = "button-trash-i"
+    // HTML //
+    item_name_modal.innerHTML = `${city.name}, ${city.country}`
+    // implementação //
+    span.append(icone_location_modal, item_name_modal)
+    button_trash.append(icone_trash)
+    item_modal_fixed.append(span, button_trash)
+    container_fixed_modal.append(item_modal_fixed)
+    /////////
+    open(item_fixed)
+}
+export function deleteFixedInterface(cityName){
+    function deleteElement(container, elementClass){
+        container.querySelectorAll(elementClass).forEach(item => {
+            const cityTitle = item.querySelector(".item-city")
+            if (cityTitle && cityTitle.textContent === cityName) {
+                close(item)
+                setTimeout(() => {
+                    item.remove() 
+                }, 500);
+            }
+        })
+    }
+    const container_fixed = document.querySelector(".container-itens-fixed")
+    const container_fixed_modal = document.querySelector(".container-modal-fix")
+    deleteElement(container_fixed, ".item-fixed")
+    deleteElement(container_fixed_modal, ".item-modal-fixed")
+}
+///////////////////////////////////////////////////////////////////
 // document_modal functions ///////////////////////////////////////////
 export function documentPosition(referenceBlock){
     const item = referenceBlock
@@ -191,7 +260,6 @@ export function documentPosition(referenceBlock){
     }px`;
 }
 export function updateDocument(cityName){
-    console.log("OIIIIIII")
     const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
     const cityObj = searchLocal[cityName]
     function syncInfo(query, object){

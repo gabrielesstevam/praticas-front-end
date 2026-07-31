@@ -8,9 +8,9 @@ const htmlElements = { // elementos html
     button_modal_fixed:document.getElementById("button-fixed-modal"),
     content_form:document.querySelector('form'),
 }
-let systemVariables = { // variáveis de sistema
+export let systemVariables = { // variáveis de sistema
     isClick:true,
-    itens_fixed_qnt:0
+    itens_fixed_qnt: 0
 }
 
 //functions ///////////////////////////////////////////
@@ -42,7 +42,7 @@ htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/f
             () => UI.modal("fixed", event.target.id))
     } else {
         limitActive(
-            () => UI.warn("Nenhuma cidade foi fixada ainda"))
+            () => UI.warn("Error: Nenhuma cidade fixada"))
     }
 })
 document.addEventListener("click",(event) => { // abrir/fechar modal de documentação
@@ -56,18 +56,34 @@ document.addEventListener("click",(event) => { // abrir/fechar modal de document
                 () => UI.clickAnimation(event.target),
                 () => UI.documentPosition(event.target.closest(".item-response")),
                 () => UI.modal("document"),
-                () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0])
-            )
+                () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0]))
         }
+    }
+})
+document.addEventListener("click",(event) => { // afixar itens
+    if (event.target.id == "button-fixed" || event.target.id == "button-fixed-i"){
+        if (systemVariables.itens_fixed_qnt < 3){
+            WS.fixedCity(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0])
+        } else {
+            UI.alert("Só é possível fixar 3 cidades")
+        }
+    }
+})
+document.addEventListener("click",(event) => { // apagar itens fixados
+    if (event.target.id == "button-trash" || event.target.id == "button-trash-i"){
+        limitActive(
+            () => UI.clickAnimation(event.target),
+            () => WS.deleteFixed(event.target.closest(".item-modal-fixed").querySelector(".item-city"))
+        )
     }
 })
 htmlElements.content_form.addEventListener('submit', (event) => { // pesquisar, salvar e criar UI
     event.preventDefault(); // bloqueia o reload da página
     
     if (/\d/.test(document.getElementById("isearch-bar").value)) { // contém números
-        UI.warn("Digite apenas letras")
+        UI.warn("Error: Digite apenas letras")
     } else if (document.getElementById("isearch-bar").value.length <= 1){ // menor ou igual a um dígito
-        UI.warn("Digite mais que uma letra")
+        UI.warn("Error: Digite mais que uma letra")
     } else {
         limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value.trim()))
         document.getElementById("isearch-bar").value = ""

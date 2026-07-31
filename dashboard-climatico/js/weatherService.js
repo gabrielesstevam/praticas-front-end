@@ -1,5 +1,6 @@
 // imports ///////////////////////////////////////////
 import * as UI from "./ui.js"
+import * as MAIN from "./main.js"
 
 // class ///////////////////////////////////////////
 class citySearch { // objeto para construção da cidade e sua documentação completa
@@ -95,7 +96,7 @@ class citySearch { // objeto para construção da cidade e sua documentação co
 class cityFixed { // objeto para construção da cidade fixada
     constructor (json){
         this.name = json.name
-        this.country = json.sys.country
+        this.country = json.country
         this.temp = json.temp
     }
 }
@@ -134,4 +135,37 @@ export async function saveCityDocument(cityName) {
     } catch (erro) {
         UI.warn(erro)
     }
+}
+export function fixedCity(cityName){
+    const fixedLocal = JSON.parse(localStorage.getItem("fixedStorage")) || {}
+    for (const i in fixedLocal){
+        if (i == cityName){
+            UI.warn(`Error: Os dados de ${cityName} ja estão fixados`)
+            return
+        }
+    }
+    const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
+    UI.makeItemFixed(searchLocal[cityName])
+    fixedLocal[cityName] = {
+        name:searchLocal[cityName].name,
+        country:searchLocal[cityName].country,
+        temp:searchLocal[cityName].temp
+    }
+    localStorage.setItem("fixedStorage",JSON.stringify(fixedLocal))
+    UI.alert(`Os dados de ${cityName} foram fixados`)
+    MAIN.systemVariables.itens_fixed_qnt ++
+}
+export function deleteFixed(cityName){
+    setTimeout(() => {
+        const fixedLocal = JSON.parse(localStorage.getItem("fixedStorage"))
+        delete fixedLocal[cityName.innerHTML.split(",")[0]]
+        localStorage.setItem("fixedStorage", JSON.stringify(fixedLocal))
+
+        UI.deleteFixedInterface(cityName.innerHTML)
+        console.log("A")
+        MAIN.systemVariables.itens_fixed_qnt -= 1
+        if (MAIN.systemVariables.itens_fixed_qnt == 0){
+            UI.modal("fixed")
+        }
+    }, 500);
 }
