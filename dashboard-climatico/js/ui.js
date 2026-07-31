@@ -1,28 +1,30 @@
-// variables -------------------------------------
-const modais = {
+// variables ///////////////////////////////////////////
+const modais_element = {
     fixed:document.querySelector(".container-modal-fix"),
     document:document.querySelector(".container-modal-description")
 }
-const pop_pups = {
+const pop_pups_element = {
     alertInterface:document.querySelector(".alert"),
     warnInterface:document.querySelector(".warn")
 }
-// pop-up ----------------------------------------
+
+// pop-up functions ///////////////////////////////////////////
 export function alert(mensage){
-    pop_pups.alertInterface.innerHTML = mensage
-    open(pop_pups.alertInterface)
+    pop_pups_element.alertInterface.innerHTML = mensage
+    open(pop_pups_element.alertInterface)
     setTimeout(() => {
-        close(pop_pups.alertInterface)
+        close(pop_pups_element.alertInterface)
     }, 2000);
 }
 export function warn(mensage){
-    pop_pups.warnInterface.innerHTML = mensage
-    open(pop_pups.warnInterface)
+    pop_pups_element.warnInterface.innerHTML = mensage
+    open(pop_pups_element.warnInterface)
     setTimeout(() => {
-        close(pop_pups.warnInterface)
+        close(pop_pups_element.warnInterface)
     }, 2000);
 }
-// theme ----------------------------------------
+
+// theme functions ///////////////////////////////////////////
 export function themeLoad(){ // carrega o tema
     const theme = localStorage.getItem("themeStorage") || "light"
     switch (theme){
@@ -63,12 +65,13 @@ function themeModify(theme) { // modifica o tema
     document.querySelector(".wallpaper-video").src = `assets/videos/${theme}-mode.webm`
     localStorage.setItem("themeStorage", theme)
 }
-// modais -----------------------------------
+
+// modais_element functions ///////////////////////////////////////////
 export function modal(modal, targetId) {
-    if (modais[modal].classList.contains("closed")){
-        open(modais[modal])
-    } else if (modais[modal].classList.contains("opened")){
-        close(modais[modal])
+    if (modais_element[modal].classList.contains("closed")){
+        open(modais_element[modal])
+    } else if (modais_element[modal].classList.contains("opened")){
+        close(modais_element[modal])
     }
 }
 function open(UIelement){
@@ -89,47 +92,105 @@ function close(UIelement){
 }
 function closeAll(UIelement){
     if (UIelement == "modal"){
-        for (const chave in modais){
-            modais[chave].classList.add("disappear")
+        for (const chave in modais_element){
+            modais_element[chave].classList.add("disappear")
         }
         setTimeout(() => {
-            for (const chave in modais){
-                modais[chave].classList.remove("disappear")
-                modais[chave].classList.remove("opened")
-                modais[chave].classList.add("closed")
+            for (const chave in modais_element){
+                modais_element[chave].classList.remove("disappear")
+                modais_element[chave].classList.remove("opened")
+                modais_element[chave].classList.add("closed")
             }
         }, 200);
     } else if (UIelement == "pop_up"){
-        for (const chave in pop_pups){
-            pop_pups[chave].classList.add("disappear")
+        for (const chave in pop_pups_element){
+            pop_pups_element[chave].classList.add("disappear")
         }
         setTimeout(() => {
-            for (const chave in modais){
-                pop_pups[chave].classList.remove("disappear")
-                pop_pups[chave].classList.remove("opened")
-                pop_pups[chave].classList.add("closed")
+            for (const chave in modais_element){
+                pop_pups_element[chave].classList.remove("disappear")
+                pop_pups_element[chave].classList.remove("opened")
+                pop_pups_element[chave].classList.add("closed")
             }
         }, 200);
     }
-}    
-// document_modal -----------------------------------
+}
+// itens functions ///////////////////////////////////////////
+// itens storage  /////////////////////////////
+export function makeItemStorage(city){
+    const container = document.querySelector(".container-itens-response")
+
+    // criação dos elementos //
+    const item_container = document.createElement("div")
+    //////////////
+    const span1 = document.createElement("span")
+    const iconLocation = document.createElement("i")
+    const cityName = document.createElement("p")
+    const iconTemperature = document.createElement("i")
+    const cityTemperature = document.createElement("p")
+    //////////////
+    const span2 = document.createElement("span")
+    const button_fixed = document.createElement("button")
+    const button_doc = document.createElement("button")
+    const icon_fixed = document.createElement("i")
+    const icon_doc = document.createElement("i")
+
+    // HTML //
+    cityName.innerHTML = `${city.name}, ${city.country}`
+    cityTemperature.innerHTML = `${(city.temp - 273.15).toFixed(1)} °C`
+
+    // classes //
+    item_container.classList.add("item-response","shadow","closed")
+    //////////////
+    iconLocation.classList.add("fa-solid","fa-location-dot")
+    cityName.classList.add("item-city")
+    iconTemperature.classList.add("fa-solid","fa-temperature-quarter")
+    cityTemperature.classList.add("item-temperature")
+    //////////////
+    button_fixed.classList.add("button-item-fixed")
+    icon_fixed.classList.add("fa-solid","fa-thumbtack")
+    button_doc.classList.add("button-item-view")
+    icon_doc.classList.add("fa-solid","fa-clipboard")
+
+    // id ///
+    icon_fixed.id = "button-fixed-i"
+    icon_doc.id = "button-view-i"
+
+    // implementação //
+    span1.append(iconLocation, cityName, iconTemperature, cityTemperature)
+
+    button_fixed.append(icon_fixed)
+    button_doc.append(icon_doc)
+    span2.append(button_fixed, button_doc)
+    
+    item_container.append(span1, span2)
+    container.append(item_container)
+
+    open(item_container)
+}
+// itens fixed  ///////////////////////////////
+
+// itens fixed_modal  ///////////////////////
+
+// document_modal functions ///////////////////////////////////////////
 export function documentPosition(referenceBlock){
     const item = referenceBlock
     const itemPosition = item.getBoundingClientRect()
    
-    modais["document"].style.position = "absolute";
-    modais["document"].style.transform = "none";
+    modais_element["document"].style.position = "absolute";
+    modais_element["document"].style.transform = "none";
 
-    modais["document"].style.top = `${itemPosition.top + window.scrollY - modais["document"].offsetHeight - 10}px`;
+    modais_element["document"].style.top = `${itemPosition.top + window.scrollY - modais_element["document"].offsetHeight - 10}px`;
 
-    modais["document"].style.left = `${
+    modais_element["document"].style.left = `${
         itemPosition.left +
         window.scrollX +
         (item.offsetWidth / 2) -
-        (modais["document"].offsetWidth / 2)
+        (modais_element["document"].offsetWidth / 2)
     }px`;
 }
-//animation -----------------------------------------
+
+//animation functions ///////////////////////////////////////////
 export function clickAnimation(targetId){
     const button = document.getElementById(targetId)
     button.classList.add("click")

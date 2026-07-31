@@ -1,61 +1,72 @@
-// imports -------------------
+// imports ///////////////////////////////////////////
 import * as UI from "./ui.js"
 import * as WS from "./weatherService.js"
-
-// variables -----------------
+// localStorage.clear()
+// variables ///////////////////////////////////////////
 const htmlElements = { // elementos html
     button_theme:document.getElementById("button-theme"),
     button_modal_fixed:document.getElementById("button-fixed-modal"),
+    content_form:document.querySelector('form'),
 }
 let systemVariables = { // variáveis de sistema
     isClick:true,
     itens_fixed_qnt:0
 }
-//functions --------------------
-function limitActive(def1, def2=()=>{}, def3=()=>{}) {
+
+//functions ///////////////////////////////////////////
+function limitActive(f1, f2=()=>{}, f3=()=>{}) { // limitador
     if (systemVariables.isClick) {
         systemVariables.isClick = false
-        def3()
-        def1()
-        def2()
+        f1()
+        f2()
+        f3()
         setTimeout(() => {
             systemVariables.isClick = true
         }, 500)
     }
 }
-// events ----------------------
-window.addEventListener("load", () => { // carregar tema
+
+// events ///////////////////////////////////////////
+window.addEventListener("load", () => { // carrega página // tema - loading
     UI.loadAnimation()
     UI.themeLoad()
 })
 htmlElements.button_theme.addEventListener("click",() => { // trocar de tema
-    limitActive(UI.themeSwitch)
+    limitActive(
+        UI.themeSwitch)
 })
 htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/fechar modal de fixos
     if (systemVariables.itens_fixed_qnt > 0){
-        limitActive(() => UI.modal("fixed", event.target.id))
+        limitActive(
+            () => UI.modal("fixed", event.target.id))
     } else {
-        limitActive(() => UI.warn("Nenhuma cidade foi fixada ainda"))
+        limitActive(
+            () => UI.warn("Nenhuma cidade foi fixada ainda"))
     }
 })
-document.addEventListener("click",(event) => {
+document.addEventListener("click",(event) => { // abrir/fechar modal de documentação
     if (event.target.id == "button-view" || event.target.id == "button-view-i"){
         if (document.querySelector(".container-modal-description").classList.contains("opened")){
-            limitActive(() => UI.modal("document"), () => UI.clickAnimation(event.target.id))
+            limitActive(
+                () => UI.clickAnimation(event.target.id),
+                () => UI.modal("document"))
         } else {
-            limitActive(() => UI.modal("document"),() => UI.clickAnimation(event.target.id),() => UI.documentPosition(event.target.closest(".item-response")))
+            limitActive(
+                () => UI.clickAnimation(event.target.id),
+                () => UI.documentPosition(event.target.closest(".item-response")),
+                () => UI.modal("document"))
         }
     }
 })
-document.querySelector('form').addEventListener('submit', (event) => {
+htmlElements.content_form.addEventListener('submit', (event) => { // pesquisar, salvar e criar UI
     event.preventDefault(); // bloqueia o reload da página
 
-    if (/\d/.test(document.getElementById("isearch-bar").value)) {
+    if (/\d/.test(document.getElementById("isearch-bar").value)) { // contém números
         UI.warn("Digite apenas letras")
-    } else if (document.getElementById("isearch-bar").value.length < 1){
+    } else if (document.getElementById("isearch-bar").value.length <= 1){ // menor ou igual a um dígito
         UI.warn("Digite mais que uma letra")
     } else {
-        
+        limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value))
     }
 
 });
