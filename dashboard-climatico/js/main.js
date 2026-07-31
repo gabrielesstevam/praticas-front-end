@@ -49,11 +49,11 @@ document.addEventListener("click",(event) => { // abrir/fechar modal de document
     if (event.target.id == "button-view" || event.target.id == "button-view-i"){
         if (document.querySelector(".container-modal-description").classList.contains("opened")){
             limitActive(
-                () => UI.clickAnimation(event.target.id),
+                () => UI.clickAnimation(event.target),
                 () => UI.modal("document"))
         } else {
             limitActive(
-                () => UI.clickAnimation(event.target.id),
+                () => UI.clickAnimation(event.target),
                 () => UI.documentPosition(event.target.closest(".item-response")),
                 () => UI.modal("document"),
                 () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0])
@@ -63,13 +63,14 @@ document.addEventListener("click",(event) => { // abrir/fechar modal de document
 })
 htmlElements.content_form.addEventListener('submit', (event) => { // pesquisar, salvar e criar UI
     event.preventDefault(); // bloqueia o reload da página
-
+    
     if (/\d/.test(document.getElementById("isearch-bar").value)) { // contém números
         UI.warn("Digite apenas letras")
     } else if (document.getElementById("isearch-bar").value.length <= 1){ // menor ou igual a um dígito
         UI.warn("Digite mais que uma letra")
     } else {
         limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value.trim()))
+        document.getElementById("isearch-bar").value = ""
     }
 
 });

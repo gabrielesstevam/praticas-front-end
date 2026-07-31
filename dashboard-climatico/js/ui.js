@@ -211,11 +211,10 @@ export function updateDocument(cityName){
 }
 
 //animation functions ///////////////////////////////////////////
-export function clickAnimation(targetId){
-    const button = document.getElementById(targetId)
-    button.classList.add("click")
+export function clickAnimation(target){
+    target.classList.add("click")
     setTimeout(() => {
-        button.classList.remove("click")
+        target.classList.remove("click")
     }, 1000);
 }
 export function loadAnimation(){
