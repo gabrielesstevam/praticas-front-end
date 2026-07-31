@@ -207,6 +207,7 @@ export function updateDocument(cityName){
     syncInfo("cloud", `${cityObj.clouds} %`)
     syncInfo("humidity", `${cityObj.humidity} %`)
     syncInfo("pressure", `${cityObj.pressure} hPa`)
+    syncInfo("time", `${cityObj.time}`)
 }
 
 //animation functions ///////////////////////////////////////////

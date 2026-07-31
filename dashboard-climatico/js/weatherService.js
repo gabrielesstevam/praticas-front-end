@@ -16,6 +16,7 @@ class citySearch { // objeto para construção da cidade e sua documentação co
         this.clouds = json.clouds.all
         this.windSpeed = json.wind.speed
         this.pressure = json.main.pressure
+        this.time = citySearch.getLocalTime(json.dt, json.timezone)
     }
     static getClimaticImage(id, roteImage){
         if (id >= 200 && id <= 232) {
@@ -83,6 +84,12 @@ class citySearch { // objeto para construção da cidade e sua documentação co
                 image: `${roteImage}clouds.jpg`,
                 climatic: "Nuvens"}
         }
+    }
+    static getLocalTime(dt, timezone) {
+        const dataCidade = new Date((dt + timezone) * 1000)
+        const horas = String(dataCidade.getUTCHours()).padStart(2, "0")
+        const minutos = String(dataCidade.getUTCMinutes()).padStart(2, "0")
+        return `${horas}:${minutos}`
     }
 }
 class cityFixed { // objeto para construção da cidade fixada
