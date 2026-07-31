@@ -211,6 +211,9 @@ body{
     align-items: center;
     justify-content: center;
 }
+.container-header span p{
+    width: 20px;
+}
 .container-header .logo{
     width: min(9vw, 70px);
     height: min(10vw, 70px);
@@ -410,6 +413,9 @@ body{
     .container-itens-fixed{ /* itens fixados em linha */
         flex-flow: row wrap;
         justify-content: center;
+    }
+    .container-header span p{
+        width: auto;
     }
 }
 /* hovers / actives ========================================= */
