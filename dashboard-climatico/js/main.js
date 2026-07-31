@@ -15,7 +15,7 @@ export let systemVariables = { // variáveis de sistema
 }
 
 //functions ///////////////////////////////////////////
-function limitActive(f1, f2=()=>{}, f3=()=>{}, f4=()=>{}) { // limitador
+function limitActive(f1=()=>{}, f2=()=>{}, f3=()=>{}, f4=()=>{}) { // limitador
     if (systemVariables.isClick) {
         systemVariables.isClick = false
         f1()
@@ -29,9 +29,10 @@ function limitActive(f1, f2=()=>{}, f3=()=>{}, f4=()=>{}) { // limitador
 }
 
 // events ///////////////////////////////////////////
-window.addEventListener("load", () => { // carrega página // tema - loading
+window.addEventListener("load", () => { // carrega página // tema - loading // dados
     UI.loadAnimation()
     UI.themeLoad()
+    WS.loadData()
 })
 htmlElements.button_theme.addEventListener("click",() => { // trocar de tema
     limitActive(
@@ -46,7 +47,7 @@ htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/f
             () => UI.warn("Error: Nenhuma cidade fixada"))
     }
 })
-htmlElements.button_reset.addEventListener("click",(event) => { // abrir/fechar modal de fixos
+htmlElements.button_reset.addEventListener("click",(event) => { // reset de dados
     UI.alert("Todos os dados seram reiniciados")
     setTimeout(() => {
         localStorage.clear()
@@ -71,9 +72,12 @@ document.addEventListener("click",(event) => { // abrir/fechar modal de document
 document.addEventListener("click",(event) => { // afixar itens
     if (event.target.id == "button-fixed" || event.target.id == "button-fixed-i"){
         if (systemVariables.itens_fixed_qnt < 3){
-            WS.fixedCity(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0])
+            limitActive(
+                UI.clickAnimation(event.target),
+                WS.fixedCity(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0], true)
+            )   
         } else {
-            UI.alert("Só é possível fixar 3 cidades")
+            UI.warn("Só é possível fixar 3 cidades")
         }
     }
 })
@@ -93,7 +97,7 @@ htmlElements.content_form.addEventListener('submit', (event) => { // pesquisar, 
     } else if (document.getElementById("isearch-bar").value.length <= 1){ // menor ou igual a um dígito
         UI.warn("Error: Digite mais que uma letra")
     } else {
-        limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value.trim()))
+        limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value.trim(), true))
         document.getElementById("isearch-bar").value = ""
     }
 

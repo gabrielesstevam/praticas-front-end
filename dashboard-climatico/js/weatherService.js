@@ -93,20 +93,15 @@ class citySearch { // objeto para construção da cidade e sua documentação co
         return `${horas}:${minutos}`
     }
 }
-class cityFixed { // objeto para construção da cidade fixada
-    constructor (json){
-        this.name = json.name
-        this.country = json.country
-        this.temp = json.temp
-    }
-}
 
 // function ///////////////////////////////////////////
-export async function saveCityDocument(cityName) {
+export async function saveCityDocument(cityName, bool) {
     try {
         const searchLocal = JSON.parse(localStorage.getItem("searchStorage")) || {}
-        for (const i in searchLocal){ // verifica se ja foi armazenada
+        if (bool){
+            for (const i in searchLocal){ // verifica se ja foi armazenada
             if (searchLocal[i].name.toLowerCase() == cityName.toLowerCase()){ throw new Error(`Os dados de ${cityName} ja estão armazenados`)}}
+        }
 
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=42064ff7a59c148d8dbfe2b9bdf4b7cf&units=metric`)
     
@@ -125,34 +120,40 @@ export async function saveCityDocument(cityName) {
         const responseJSON = await response.json()
         const city = new citySearch(responseJSON)
         searchLocal[responseJSON.name] = city
-
         UI.makeItemStorage(city)
 
-        localStorage.setItem("searchStorage", JSON.stringify(searchLocal))
-
-        UI.alert(`Os dados de ${cityName} foram armazenados `)
+        if (bool){
+            localStorage.setItem("searchStorage", JSON.stringify(searchLocal))
+            UI.alert(`Os dados de ${cityName} foram armazenados `)
+        }
 
     } catch (erro) {
         UI.warn(erro)
     }
 }
-export function fixedCity(cityName){
+export function fixedCity(cityName,bool){
     const fixedLocal = JSON.parse(localStorage.getItem("fixedStorage")) || {}
-    for (const i in fixedLocal){
-        if (i == cityName){
-            UI.warn(`Error: Os dados de ${cityName} ja estão fixados`)
-            return
+    if (bool){
+        for (const i in fixedLocal){
+            if (i == cityName){
+                UI.warn(`Error: Os dados de ${cityName} ja estão fixados`)
+                return
+            }
         }
     }
+    
     const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
     UI.makeItemFixed(searchLocal[cityName])
-    fixedLocal[cityName] = {
-        name:searchLocal[cityName].name,
-        country:searchLocal[cityName].country,
-        temp:searchLocal[cityName].temp
+    if (bool){
+        fixedLocal[cityName] = {
+            name:searchLocal[cityName].name,
+            country:searchLocal[cityName].country,
+            temp:searchLocal[cityName].temp
+        }
+        localStorage.setItem("fixedStorage",JSON.stringify(fixedLocal))
+        UI.alert(`Os dados de ${cityName} foram fixados`) 
     }
-    localStorage.setItem("fixedStorage",JSON.stringify(fixedLocal))
-    UI.alert(`Os dados de ${cityName} foram fixados`)
+    
     MAIN.systemVariables.itens_fixed_qnt ++
 }
 export function deleteFixed(cityName){
@@ -168,4 +169,14 @@ export function deleteFixed(cityName){
             UI.modal("fixed")
         }
     }, 500);
+}
+export function loadData(){
+    const searchLocal = JSON.parse(localStorage.getItem("searchStorage")) || {}
+    const fixedLocal = JSON.parse(localStorage.getItem("fixedStorage")) || {}
+    for (const i in searchLocal) {
+        saveCityDocument(searchLocal[i].name,false)
+    }
+    for (const i in fixedLocal) {
+        fixedCity(searchLocal[i].name,false)
+    }
 }
