@@ -1,12 +1,13 @@
 // imports ///////////////////////////////////////////
 import * as UI from "./ui.js"
 import * as WS from "./weatherService.js"
-localStorage.clear()
+
 // variables ///////////////////////////////////////////
 const htmlElements = { // elementos html
     button_theme:document.getElementById("button-theme"),
     button_modal_fixed:document.getElementById("button-fixed-modal"),
-    content_form:document.querySelector('form'),
+    button_reset:document.getElementById("button-reset"),
+    content_form:document.querySelector('form')
 }
 export let systemVariables = { // variáveis de sistema
     isClick:true,
@@ -44,6 +45,13 @@ htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/f
         limitActive(
             () => UI.warn("Error: Nenhuma cidade fixada"))
     }
+})
+htmlElements.button_reset.addEventListener("click",(event) => { // abrir/fechar modal de fixos
+    UI.alert("Todos os dados seram reiniciados")
+    setTimeout(() => {
+        localStorage.clear()
+        location.reload()
+    }, 1000);
 })
 document.addEventListener("click",(event) => { // abrir/fechar modal de documentação
     if (event.target.id == "button-view" || event.target.id == "button-view-i"){
