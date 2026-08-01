@@ -77,7 +77,7 @@ document.addEventListener("click",(event) => { // afixar itens
                 WS.fixedCity(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0], true)
             )   
         } else {
-            UI.warn("Só é possível fixar 3 cidades")
+            UI.warn("Error: Só é possível fixar 3 cidades")
         }
     }
 })
