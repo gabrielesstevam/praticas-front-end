@@ -102,3 +102,8 @@ htmlElements.content_form.addEventListener('submit', (event) => { // pesquisar, 
     }
 
 });
+
+setInterval(() => {
+    WS.updateAll()
+    UI.alert("Dados Atualizados!")
+}, 300000); // 5 minutos = 300000

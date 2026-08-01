@@ -170,6 +170,15 @@ export function makeItemStorage(city){
     ///////
     open(item_container)
 }
+export function updateStorageList() {
+    const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
+    const elementsStorage = document.querySelector(".container-itens-response").children
+
+    for (const i of elementsStorage){
+        const city = searchLocal[i.querySelector(".item-city").innerHTML.split(",")[0]]
+        i.querySelector(".item-temperature").innerHTML = `${city.temp} °C`
+    }
+}
 
 // itens fixed  ///////////////////////////////
 export function makeItemFixed(city){
@@ -241,6 +250,16 @@ export function deleteFixedInterface(cityName){
     deleteElement(container_fixed, ".item-fixed")
     deleteElement(container_fixed_modal, ".item-modal-fixed")
 }
+export function updateFixed () {
+    const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
+    const elementsFixed = document.querySelector(".container-itens-fixed").children
+
+    for (const i of elementsFixed){
+        const city = searchLocal[i.querySelector(".item-city").innerHTML.split(",")[0]]
+        i.querySelector(".item-temperature").innerHTML = `${city.temp} °C`
+    }
+}
+
 ///////////////////////////////////////////////////////////////////
 // document_modal functions ///////////////////////////////////////////
 export function documentPosition(referenceBlock){
@@ -298,3 +317,5 @@ export function loadAnimation(){
         }, 2000);
     }, 500);
 }
+
+// 24.85 19:38

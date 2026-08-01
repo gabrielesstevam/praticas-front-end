@@ -163,7 +163,6 @@ export function deleteFixed(cityName){
         localStorage.setItem("fixedStorage", JSON.stringify(fixedLocal))
 
         UI.deleteFixedInterface(cityName.innerHTML)
-        console.log("A")
         MAIN.systemVariables.itens_fixed_qnt -= 1
         if (MAIN.systemVariables.itens_fixed_qnt == 0){
             UI.modal("fixed")
@@ -177,6 +176,19 @@ export function loadData(){
         saveCityDocument(searchLocal[i].name,false)
     }
     for (const i in fixedLocal) {
-        fixedCity(searchLocal[i].name,false)
+        fixedCity(fixedLocal[i].name,false)
     }
+}
+export async function updateAll(){
+    console.log(`[updateAll] rodou às ${new Date().toLocaleTimeString()}`)
+    const searchUpdateLocal = {}
+    const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
+    for (const i in searchLocal){
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchLocal[i].name}&appid=42064ff7a59c148d8dbfe2b9bdf4b7cf&units=metric`)
+        const responseJSON = await response.json()
+        searchUpdateLocal[responseJSON.name] = new citySearch(responseJSON)
+    }
+    localStorage.setItem("searchStorage",JSON.stringify(searchUpdateLocal))
+    UI.updateStorageList()
+    UI.updateFixed()
 }
