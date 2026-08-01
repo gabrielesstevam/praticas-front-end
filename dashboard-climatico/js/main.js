@@ -11,7 +11,8 @@ const htmlElements = { // elementos html
 }
 export let systemVariables = { // variáveis de sistema
     isClick:true,
-    itens_fixed_qnt: 0
+    itens_fixed_qnt: 0,
+    modal_item_loc:""
 }
 
 //functions ///////////////////////////////////////////
@@ -57,9 +58,17 @@ htmlElements.button_reset.addEventListener("click",(event) => { // reset de dado
 document.addEventListener("click",(event) => { // abrir/fechar modal de documentação
     if (event.target.id == "button-view" || event.target.id == "button-view-i"){
         if (document.querySelector(".container-modal-description").classList.contains("opened")){
-            limitActive(
-                () => UI.clickAnimation(event.target),
-                () => UI.modal("document"))
+            if (systemVariables.modal_item_loc != event.target.closest(".item-response").querySelector(".item-city").innerHTML){
+                limitActive(
+                    () => UI.clickAnimation(event.target),
+                    () => UI.documentPosition(event.target.closest(".item-response")),
+                    () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0]))
+                systemVariables.modal_item_loc = event.target.closest(".item-response").querySelector(".item-city").innerHTML
+            } else if (systemVariables.modal_item_loc == event.target.closest(".item-response").querySelector(".item-city").innerHTML){
+                limitActive(
+                    () => UI.clickAnimation(event.target),
+                    () => UI.modal("document"))
+            }
         } else {
             limitActive(
                 () => UI.clickAnimation(event.target),
