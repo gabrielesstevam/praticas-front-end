@@ -62,8 +62,9 @@ document.addEventListener("click",(event) => { // abrir/fechar modal de document
                 limitActive(
                     () => UI.clickAnimation(event.target),
                     () => UI.documentPosition(event.target.closest(".item-response")),
-                    () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0]))
-                systemVariables.modal_item_loc = event.target.closest(".item-response").querySelector(".item-city").innerHTML
+                    () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0]),
+                    () => { systemVariables.modal_item_loc = event.target.closest(".item-response").querySelector(".item-city").innerHTML })
+                
             } else if (systemVariables.modal_item_loc == event.target.closest(".item-response").querySelector(".item-city").innerHTML){
                 limitActive(
                     () => UI.clickAnimation(event.target),
