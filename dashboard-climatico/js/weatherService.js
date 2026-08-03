@@ -97,13 +97,13 @@ class citySearch { // objeto para construção da cidade e sua documentação co
 // function ///////////////////////////////////////////
 export async function saveCityDocument(cityName, bool) {
     try {
-        const searchLocal = JSON.parse(localStorage.getItem("searchStorage")) || {}
+        const searchLocal = getLocalItem("searchStorage") || {}
         if (bool){
             for (const i in searchLocal){ // verifica se ja foi armazenada
             if (searchLocal[i].name.toLowerCase() == cityName.toLowerCase()){ throw new Error(`Os dados de ${cityName} ja estão armazenados`)}}
         }
 
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=42064ff7a59c148d8dbfe2b9bdf4b7cf&units=metric`)
+        const response = await fetchCity(cityName)
     
         if (!response.ok){ // verifica os erros na requisição
             if (response.status === 404) {
@@ -128,21 +128,21 @@ export async function saveCityDocument(cityName, bool) {
         }
 
     } catch (erro) {
-        UI.warn(erro)
+        UI.warn(erro.message)
     }
 }
 export function fixedCity(cityName,bool){
-    const fixedLocal = JSON.parse(localStorage.getItem("fixedStorage")) || {}
+    const fixedLocal = getLocalItem("fixedStorage") || {}
     if (bool){
         for (const i in fixedLocal){
             if (i == cityName){
-                UI.warn(`Error: Os dados de ${cityName} ja estão fixados`)
+                UI.warn(`Os dados de ${cityName} ja estão fixados`)
                 return
             }
         }
     }
     
-    const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
+    const searchLocal = getLocalItem("searchStorage")
     UI.makeItemFixed(searchLocal[cityName])
     if (bool){
         fixedLocal[cityName] = {
@@ -158,7 +158,7 @@ export function fixedCity(cityName,bool){
 }
 export function deleteFixed(cityName){
     setTimeout(() => {
-        const fixedLocal = JSON.parse(localStorage.getItem("fixedStorage"))
+        const fixedLocal = getLocalItem("fixedStorage")
         delete fixedLocal[cityName.innerHTML.split(",")[0]]
         localStorage.setItem("fixedStorage", JSON.stringify(fixedLocal))
 
@@ -170,8 +170,8 @@ export function deleteFixed(cityName){
     }, 500);
 }
 export function loadData(){
-    const searchLocal = JSON.parse(localStorage.getItem("searchStorage")) || {}
-    const fixedLocal = JSON.parse(localStorage.getItem("fixedStorage")) || {}
+    const searchLocal = getLocalItem("searchStorage") || {}
+    const fixedLocal = getLocalItem("fixedStorage") || {}
     for (const i in searchLocal) {
         saveCityDocument(searchLocal[i].name,false)
     }
@@ -180,15 +180,28 @@ export function loadData(){
     }
 }
 export async function updateAll(){
-    console.log(`[updateAll] rodou às ${new Date().toLocaleTimeString()}`)
+    const searchLocal = getLocalItem("searchStorage")
+    const promises = Object.values(searchLocal).map(city => 
+        fetchCity(city.name).then(r => r.json())
+    )
+    const results = await Promise.all(promises)
+
     const searchUpdateLocal = {}
-    const searchLocal = JSON.parse(localStorage.getItem("searchStorage"))
-    for (const i in searchLocal){
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchLocal[i].name}&appid=42064ff7a59c148d8dbfe2b9bdf4b7cf&units=metric`)
-        const responseJSON = await response.json()
-        searchUpdateLocal[responseJSON.name] = new citySearch(responseJSON)
-    }
+    
+    results.forEach(json => {
+        const city = new citySearch(json)
+        searchUpdateLocal[city.name] = city
+    })
     localStorage.setItem("searchStorage",JSON.stringify(searchUpdateLocal))
-    UI.updateStorageList()
-    UI.updateFixed()
+    UI.updateItens()
+}
+export function getLocalItem(key){
+    try{
+        return JSON.parse(localStorage.getItem(key))
+    } catch(erro){
+        UI.warn(erro.message)
+    }
+}
+async function fetchCity(cityName){
+    return await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=42064ff7a59c148d8dbfe2b9bdf4b7cf&units=metric`)
 }

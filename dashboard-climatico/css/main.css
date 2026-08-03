@@ -87,7 +87,7 @@ body{
 }
 .wallpaper-video{
     position: absolute;
-    width: 280vw;
+    width: 250vw;
     z-index: -1;
     object-fit: cover;
 }

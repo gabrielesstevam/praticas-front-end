@@ -16,7 +16,7 @@ export let systemVariables = { // variáveis de sistema
 }
 
 //functions ///////////////////////////////////////////
-function limitActive(f1=()=>{}, f2=()=>{}, f3=()=>{}, f4=()=>{}) { // limitador
+function limitActive(f1= ()=>{}, f2= ()=>{}, f3= ()=>{}, f4= ()=>{}) { // limitador
     if (systemVariables.isClick) {
         systemVariables.isClick = false
         f1()
@@ -37,7 +37,7 @@ window.addEventListener("load", () => { // carrega página // tema - loading // 
 })
 htmlElements.button_theme.addEventListener("click",() => { // trocar de tema
     limitActive(
-        UI.themeSwitch)
+        () => UI.themeSwitch())
 })
 htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/fechar modal de fixos
     if (systemVariables.itens_fixed_qnt > 0){
@@ -45,7 +45,7 @@ htmlElements.button_modal_fixed.addEventListener("click",(event) => { // abrir/f
             () => UI.modal("fixed", event.target.id))
     } else {
         limitActive(
-            () => UI.warn("Error: Nenhuma cidade fixada"))
+            () => UI.warn("Nenhuma cidade fixada"))
     }
 })
 htmlElements.button_reset.addEventListener("click",(event) => { // reset de dados
@@ -77,22 +77,16 @@ document.addEventListener("click",(event) => { // abrir/fechar modal de document
                 () => UI.modal("document"),
                 () => UI.updateDocument(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0]))
         }
-    }
-})
-document.addEventListener("click",(event) => { // afixar itens
-    if (event.target.id == "button-fixed" || event.target.id == "button-fixed-i"){
+    } else if (event.target.id == "button-fixed" || event.target.id == "button-fixed-i"){
         if (systemVariables.itens_fixed_qnt < 3){
             limitActive(
-                UI.clickAnimation(event.target),
-                WS.fixedCity(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0], true)
+                () => UI.clickAnimation(event.target),
+                () => WS.fixedCity(event.target.closest(".item-response").querySelector(".item-city").innerHTML.split(",")[0], true)
             )   
         } else {
-            UI.warn("Error: Só é possível fixar 3 cidades")
+            UI.warn("Só é possível fixar 3 cidades")
         }
-    }
-})
-document.addEventListener("click",(event) => { // apagar itens fixados
-    if (event.target.id == "button-trash" || event.target.id == "button-trash-i"){
+    } else if (event.target.id == "button-trash" || event.target.id == "button-trash-i"){
         limitActive(
             () => UI.clickAnimation(event.target),
             () => WS.deleteFixed(event.target.closest(".item-modal-fixed").querySelector(".item-city"))
@@ -101,15 +95,16 @@ document.addEventListener("click",(event) => { // apagar itens fixados
 })
 htmlElements.content_form.addEventListener('submit', (event) => { // pesquisar, salvar e criar UI
     event.preventDefault(); // bloqueia o reload da página
-    
-    if (/\d/.test(document.getElementById("isearch-bar").value)) { // contém números
-        UI.warn("Error: Digite apenas letras")
-    } else if (document.getElementById("isearch-bar").value.length <= 1){ // menor ou igual a um dígito
-        UI.warn("Error: Digite mais que uma letra")
+    const inputValue = document.getElementById("isearch-bar").value
+    if (/\d/.test(inputValue) || /[!@#$%^&*(),.?":{}|<>]/.test(inputValue)) { // contém números
+        UI.warn("Digite apenas letras")
+    } else if (inputValue.length <= 1){ // menor ou igual a d
+        UI.warn("Digite mais que uma letra")
     } else {
-        limitActive(() => WS.saveCityDocument(document.getElementById("isearch-bar").value.trim(), true))
-        document.getElementById("isearch-bar").value = ""
+        limitActive(
+            () => WS.saveCityDocument(inputValue.trim(), true))
     }
+    document.getElementById("isearch-bar").value = ""
 
 });
 

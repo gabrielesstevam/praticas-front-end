@@ -17,9 +17,9 @@
                 <p>DashBoard Climático</p>
             </span>
             <span class="button-side">
-                <button id="button-reset">Reiniciar Sistema</button>
-                <button id="button-fixed-modal">Fixados</button>
-                <button id="button-theme">Modo Escuro</button>
+                <button aria-label="Reiniciar o dados salvos" id="button-reset">Reiniciar</button>
+                <button aria-label="Visualizar cidades fixadas" id="button-fixed-modal">Fixados</button>
+                <button aria-label="Mudar o tema da página" id="button-theme">Modo Escuro</button>
             </span>
         </div>
         <div class="container-social">
@@ -35,9 +35,9 @@
         <form class="container-search">
             <span class="glass shadow">
                 <label for="isearch-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
-                <input type="text" name="search-bar" id="isearch-bar" placeholder="Digite o nome de uma cidade" autocomplete="off">
+                <input aria-label="Digitar a cidade que deseja pesquisar" type="text" name="search-bar" id="isearch-bar" placeholder="Digite o nome de uma cidade" autocomplete="off">
             </span>
-            <input type="submit" value="Buscar" class="button-search glass shadow">
+            <input aria-label="Pesquisar" type="submit" value="Buscar" class="button-search glass shadow">
         </form>
         <div class="container-itens-fixed">
         </div>
